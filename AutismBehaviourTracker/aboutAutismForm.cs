@@ -28,5 +28,10 @@ namespace AutismBehaviourTracker
         {
             
         }
+
+        private void aboutAutismLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

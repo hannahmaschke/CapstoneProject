@@ -65,6 +65,7 @@
             this.aboutAutismLabel.Size = new System.Drawing.Size(210, 37);
             this.aboutAutismLabel.TabIndex = 2;
             this.aboutAutismLabel.Text = "About Autism";
+            this.aboutAutismLabel.Click += new System.EventHandler(this.aboutAutismLabel_Click);
             // 
             // webBrowser1
             // 

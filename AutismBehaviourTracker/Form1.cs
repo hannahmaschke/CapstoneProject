@@ -19,9 +19,16 @@ namespace AutismBehaviourTracker
 
         private void journalEntries_Click(object sender, EventArgs e)
         {
-            journalEntry journalEntry = new journalEntry();
+            // Create an instance of the journalEntry form
+            journalEntry journalEntryForm = new journalEntry();
+
+            // Hide the main menu form
             this.Hide();
-            journalEntry.ShowDialog();
+
+            // Show the journal entry form as a dialog
+            journalEntryForm.ShowDialog();
+
+            // After the journal entry form is closed, show the main menu again
             this.Show();
         }
 
@@ -31,6 +38,11 @@ namespace AutismBehaviourTracker
             this.Hide();
             aboutAutism.ShowDialog();
             this.Show();
+        }
+
+        private void mainMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

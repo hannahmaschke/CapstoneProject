@@ -34,9 +34,9 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.previousEntryTextBox = new System.Windows.Forms.RichTextBox();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.previousEntryLabel = new System.Windows.Forms.Label();
-            this.previousEntryTextBox = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +101,16 @@
             this.panel1.Size = new System.Drawing.Size(449, 336);
             this.panel1.TabIndex = 6;
             // 
+            // previousEntryTextBox
+            // 
+            this.previousEntryTextBox.BackColor = System.Drawing.Color.White;
+            this.previousEntryTextBox.Location = new System.Drawing.Point(0, 3);
+            this.previousEntryTextBox.Name = "previousEntryTextBox";
+            this.previousEntryTextBox.ReadOnly = true;
+            this.previousEntryTextBox.Size = new System.Drawing.Size(416, 330);
+            this.previousEntryTextBox.TabIndex = 4;
+            this.previousEntryTextBox.Text = "";
+            // 
             // vScrollBar1
             // 
             this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -119,16 +129,6 @@
             this.previousEntryLabel.TabIndex = 7;
             this.previousEntryLabel.Text = "Read previous entries:";
             // 
-            // previousEntryTextBox
-            // 
-            this.previousEntryTextBox.BackColor = System.Drawing.Color.White;
-            this.previousEntryTextBox.Location = new System.Drawing.Point(0, 3);
-            this.previousEntryTextBox.Name = "previousEntryTextBox";
-            this.previousEntryTextBox.ReadOnly = true;
-            this.previousEntryTextBox.Size = new System.Drawing.Size(416, 330);
-            this.previousEntryTextBox.TabIndex = 4;
-            this.previousEntryTextBox.Text = "";
-            // 
             // journalEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -145,6 +145,7 @@
             this.MaximizeBox = false;
             this.Name = "journalEntry";
             this.Text = "journalEntry";
+            this.Load += new System.EventHandler(this.journalEntry_Load_1);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

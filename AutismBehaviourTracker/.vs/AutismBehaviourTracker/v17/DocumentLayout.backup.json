@@ -1,30 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\",
+  "WorkspaceRootPath": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\journalEntry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:journalEntry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|c:\\users\\hanna\\onedrive\\documents\\capstone project class\\repository\\capstoneproject\\autismbehaviourtracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|c:\\users\\hanna\\onedrive\\documents\\capstone project class\\autismbehaviourtracker\\aboutautismform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:aboutautismform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\aboutAutismForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:aboutAutismForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\journalEntry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\journalEntry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:journalEntry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|c:\\users\\hanna\\onedrive\\documents\\capstone project class\\repository\\capstoneproject\\autismbehaviourtracker\\databasesetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:databasesetup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\journalentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:journalentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\aboutAutismForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:aboutAutismForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\aboutautismform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1D6698A1-8297-4DDC-91B4-75BA5B696E86}|AutismBehaviourTracker.csproj|solutionrelative:aboutautismform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,24 +74,87 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "aboutAutismForm.cs",
-              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\aboutAutismForm.cs",
-              "RelativeDocumentMoniker": "aboutAutismForm.cs",
-              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\aboutAutismForm.cs",
-              "RelativeToolTip": "aboutAutismForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAswBQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T04:03:33.102Z",
+              "WhenOpened": "2025-01-28T21:19:57.118Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "journalEntry.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\journalEntry.cs",
+              "RelativeDocumentMoniker": "journalEntry.cs",
+              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\journalEntry.cs [Design]",
+              "RelativeToolTip": "journalEntry.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T22:43:56.584Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "journalEntry.cs",
+              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\journalEntry.cs",
+              "RelativeDocumentMoniker": "journalEntry.cs",
+              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\journalEntry.cs",
+              "RelativeToolTip": "journalEntry.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAkwB4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T22:51:31.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DatabaseSetup.cs",
+              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\DatabaseSetup.cs",
+              "RelativeDocumentMoniker": "DatabaseSetup.cs",
+              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\DatabaseSetup.cs",
+              "RelativeToolTip": "DatabaseSetup.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAqwEUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T21:23:47.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T21:49:25.19Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-20T22:41:35.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "aboutAutismForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\aboutAutismForm.cs",
+              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\aboutAutismForm.cs",
               "RelativeDocumentMoniker": "aboutAutismForm.cs",
-              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\aboutAutismForm.cs [Design]",
+              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\aboutAutismForm.cs [Design]",
               "RelativeToolTip": "aboutAutismForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-21T03:58:34.811Z",
@@ -91,51 +162,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "journalEntry.cs",
-              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\journalEntry.cs",
-              "RelativeDocumentMoniker": "journalEntry.cs",
-              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\journalEntry.cs*",
-              "RelativeToolTip": "journalEntry.cs*",
-              "ViewState": "AgIAABMAAAAAAAAAAAA/wCgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "aboutAutismForm.cs",
+              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\aboutAutismForm.cs",
+              "RelativeDocumentMoniker": "aboutAutismForm.cs",
+              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\CapstoneProject\\AutismBehaviourTracker\\aboutAutismForm.cs",
+              "RelativeToolTip": "aboutAutismForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T22:51:31.883Z",
+              "WhenOpened": "2025-01-21T04:03:33.102Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "journalEntry.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\journalEntry.cs",
-              "RelativeDocumentMoniker": "journalEntry.cs",
-              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\journalEntry.cs [Design]*",
-              "RelativeToolTip": "journalEntry.cs [Design]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T22:43:56.584Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAIwCAAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T22:41:35.385Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\AutismBehaviourTracker\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\hanna\\OneDrive\\Documents\\Capstone Project Class\\Repository\\AutismBehaviourTracker\\Form1.cs [Design]",
-              "RelativeToolTip": "..\\Repository\\AutismBehaviourTracker\\Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-20T21:49:25.19Z"
             }
           ]
         }

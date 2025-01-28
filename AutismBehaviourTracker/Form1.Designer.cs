@@ -119,6 +119,7 @@
             this.Controls.Add(this.mainMenuLabel);
             this.Name = "mainMenu";
             this.Text = "Autism Behaviour Tracking";
+            this.Load += new System.EventHandler(this.mainMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
