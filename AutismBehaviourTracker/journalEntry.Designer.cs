@@ -142,6 +142,7 @@
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.enterEntryLabel);
             this.Controls.Add(this.journalEntryLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "journalEntry";
             this.Text = "journalEntry";

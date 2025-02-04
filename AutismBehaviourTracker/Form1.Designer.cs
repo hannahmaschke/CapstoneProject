@@ -69,6 +69,7 @@
             this.dailyQuestions.Size = new System.Drawing.Size(197, 23);
             this.dailyQuestions.TabIndex = 2;
             this.dailyQuestions.Text = "Answer Daily Questions";
+            this.dailyQuestions.Click += new System.EventHandler(this.dailyQuestions_Click);
             // 
             // journalEntries
             // 
@@ -117,6 +118,8 @@
             this.Controls.Add(this.dailyQuestions);
             this.Controls.Add(this.subHeading);
             this.Controls.Add(this.mainMenuLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "mainMenu";
             this.Text = "Autism Behaviour Tracking";
             this.Load += new System.EventHandler(this.mainMenu_Load);

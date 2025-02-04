@@ -6,7 +6,7 @@ namespace AutismBehaviourTracker
 {
     public static class DatabaseSetup
     {
-        private static string connectionString = "Data Source=library.db;Version=3;";
+        public static string connectionString = "Data Source=library.db;Version=3;";
 
         // save journal entry to the database
         public static void SaveJournalEntry(string entryText, string date)
@@ -57,14 +57,29 @@ namespace AutismBehaviourTracker
             {
                 conn.Open();
 
-                string createTableQuery = @"
-            CREATE TABLE IF NOT EXISTS journalEntries (
-                Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                date TEXT NOT NULL,
-                entryText TEXT NOT NULL
-            );";
+                // create table for journal entries
+                string createJournalTableQuery = @"
+        CREATE TABLE IF NOT EXISTS journalEntries (
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT NOT NULL,
+            entryText TEXT NOT NULL
+        );";
 
-                using (SQLiteCommand cmd = new SQLiteCommand(createTableQuery, conn))
+                using (SQLiteCommand cmd = new SQLiteCommand(createJournalTableQuery, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+                // create table for storing responses to daily questions
+                string createQuestionsTableQuery = @"
+        CREATE TABLE IF NOT EXISTS questionsResponses (
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            question TEXT NOT NULL,
+            answer TEXT NOT NULL,
+            responseDate TEXT NOT NULL
+        );";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(createQuestionsTableQuery, conn))
                 {
                     cmd.ExecuteNonQuery();
                 }

@@ -19,16 +19,16 @@ namespace AutismBehaviourTracker
 
         private void journalEntries_Click(object sender, EventArgs e)
         {
-            // Create an instance of the journalEntry form
+            // create an instance of the journalEntry form
             journalEntry journalEntryForm = new journalEntry();
 
-            // Hide the main menu form
+            // hide the main menu form
             this.Hide();
 
-            // Show the journal entry form as a dialog
+            // show the journal entry form as a dialog
             journalEntryForm.ShowDialog();
 
-            // After the journal entry form is closed, show the main menu again
+            // close the journal entry form 
             this.Show();
         }
 
@@ -43,6 +43,14 @@ namespace AutismBehaviourTracker
         private void mainMenu_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dailyQuestions_Click(object sender, EventArgs e)
+        {
+            dailyQuestionForm dailyQuestionForm = new dailyQuestionForm();
+            this.Hide();
+            dailyQuestionForm.ShowDialog();
+            this.Show();
         }
     }
 }

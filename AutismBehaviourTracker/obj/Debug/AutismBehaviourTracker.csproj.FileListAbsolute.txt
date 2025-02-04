@@ -57,3 +57,9 @@ C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProj
 C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProject\AutismBehaviourTracker\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll
 C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProject\AutismBehaviourTracker\bin\Debug\x86\sqlite3.dll
 C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProject\AutismBehaviourTracker\bin\Debug\x64\sqlite3.dll
+C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProject\AutismBehaviourTracker\bin\Debug\Syncfusion.Core.WinForms.dll
+C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProject\AutismBehaviourTracker\bin\Debug\Syncfusion.Shared.Base.dll
+C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProject\AutismBehaviourTracker\bin\Debug\Syncfusion.Licensing.dll
+C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProject\AutismBehaviourTracker\bin\Debug\Syncfusion.Core.WinForms.xml
+C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProject\AutismBehaviourTracker\bin\Debug\Syncfusion.Shared.Base.xml
+C:\Users\hanna\OneDrive\Documents\Capstone Project Class\Repository\CapstoneProject\AutismBehaviourTracker\obj\Debug\AutismBehaviourTracker.dailyQuestionForm.resources
