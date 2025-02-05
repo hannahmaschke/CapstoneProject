@@ -176,6 +176,7 @@
             this.Name = "dailyQuestionForm";
             this.Padding = new System.Windows.Forms.Padding(1, 0, 0, 1);
             this.Text = "Daily Questions";
+            this.Load += new System.EventHandler(this.dailyQuestionForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -6,6 +6,7 @@ namespace AutismBehaviourTracker
 {
     public static class DatabaseSetup
     {
+
         public static string connectionString = "Data Source=library.db;Version=3;";
 
         // save journal entry to the database
@@ -57,33 +58,93 @@ namespace AutismBehaviourTracker
             {
                 conn.Open();
 
-                // create table for journal entries
-                string createJournalTableQuery = @"
-        CREATE TABLE IF NOT EXISTS journalEntries (
-            Id INTEGER PRIMARY KEY AUTOINCREMENT,
-            date TEXT NOT NULL,
-            entryText TEXT NOT NULL
-        );";
-
-                using (SQLiteCommand cmd = new SQLiteCommand(createJournalTableQuery, conn))
+                // check if the table exists and create it 
+                string checkTableQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name='questionResponses';";
+                using (SQLiteCommand cmd = new SQLiteCommand(checkTableQuery, conn))
                 {
-                    cmd.ExecuteNonQuery();
+                    var result = cmd.ExecuteScalar();
+                    if (result == null)
+                    {
+                        // if the table doesn't exist create it
+                        string createQuestionsTableQuery = @"
+                CREATE TABLE IF NOT EXISTS questionResponses (
+                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    date TEXT NOT NULL,
+                    question1 INTEGER,
+                    question2 INTEGER,
+                    question3 INTEGER,
+                    question4 INTEGER,
+                    question5 INTEGER,
+                    question6 INTEGER,
+                    question7 INTEGER,
+                    question8 INTEGER,
+                    question9 INTEGER,
+                    question10 INTEGER,
+                    question11 INTEGER,
+                    question12 INTEGER,
+                    question13 INTEGER,
+                    question14 INTEGER,
+                    question15 INTEGER,
+                    question16 INTEGER,
+                    question17 INTEGER,
+                    question18 INTEGER,
+                    question19 INTEGER,
+                    question20 INTEGER,
+                    question21 INTEGER,
+                    question22 INTEGER,
+                    question23 INTEGER,
+                    question24 INTEGER,
+                    question25 INTEGER,
+                    question26 INTEGER
+                );";
+
+                        using (SQLiteCommand createCmd = new SQLiteCommand(createQuestionsTableQuery, conn))
+                        {
+                            createCmd.ExecuteNonQuery();
+                        }
+                    }
                 }
+            }
+        }
 
-                // create table for storing responses to daily questions
-                string createQuestionsTableQuery = @"
-        CREATE TABLE IF NOT EXISTS questionsResponses (
-            Id INTEGER PRIMARY KEY AUTOINCREMENT,
-            question TEXT NOT NULL,
-            answer TEXT NOT NULL,
-            responseDate TEXT NOT NULL
-        );";
+        public static void SaveResponse(int[] responses)
+        {
+            string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
 
-                using (SQLiteCommand cmd = new SQLiteCommand(createQuestionsTableQuery, conn))
+            using (SQLiteConnection conn = new SQLiteConnection(DatabaseSetup.connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+        INSERT INTO questionResponses (date, question1, question2, question3, question4, question5, 
+                                        question6, question7, question8, question9, question10, question11, 
+                                        question12, question13, question14, question15, question16, question17, 
+                                        question18, question19, question20, question21, question22, question23, 
+                                        question24, question25, question26)
+        VALUES (@date, @question1, @question2, @question3, @question4, @question5, 
+                @question6, @question7, @question8, @question9, @question10, @question11, 
+                @question12, @question13, @question14, @question15, @question16, @question17, 
+                @question18, @question19, @question20, @question21, @question22, @question23, 
+                @question24, @question25, @question26)";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
+                    // add the date
+                    cmd.Parameters.AddWithValue("@date", currentDate);
+
+                    // add responses for each question 
+                    for (int i = 0; i < responses.Length; i++)
+                    {
+                        cmd.Parameters.AddWithValue($"@question{i + 1}", responses[i]);
+                    }
+
+                    // execute the query to insert the row into the table
                     cmd.ExecuteNonQuery();
                 }
             }
         }
+
+   
     }
-}
+        }
+    

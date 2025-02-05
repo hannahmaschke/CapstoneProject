@@ -118,6 +118,12 @@
     <Compile Include="journalEntry.Designer.cs">
       <DependentUpon>journalEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="previousGraphs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="previousGraphs.Designer.cs">
+      <DependentUpon>previousGraphs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="aboutAutismForm.resx">
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="journalEntry.resx">
       <DependentUpon>journalEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="previousGraphs.resx">
+      <DependentUpon>previousGraphs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

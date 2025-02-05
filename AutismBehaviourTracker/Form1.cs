@@ -15,6 +15,7 @@ namespace AutismBehaviourTracker
         public mainMenu()
         {
             InitializeComponent();
+            
         }
 
         private void journalEntries_Click(object sender, EventArgs e)
@@ -50,6 +51,14 @@ namespace AutismBehaviourTracker
             dailyQuestionForm dailyQuestionForm = new dailyQuestionForm();
             this.Hide();
             dailyQuestionForm.ShowDialog();
+            this.Show();
+        }
+
+        private void previousGraphs_Click(object sender, EventArgs e)
+        {
+            previousGraphs previousGraphs = new previousGraphs();
+            this.Hide();
+            previousGraphs.ShowDialog();
             this.Show();
         }
     }

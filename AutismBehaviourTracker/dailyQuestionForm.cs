@@ -14,10 +14,13 @@ namespace AutismBehaviourTracker
     public partial class dailyQuestionForm : Form
     {
         RadioButton[] radioButtonOptions = new RadioButton[5];
+        private int[] responses = new int[dailyQuestionsClass.questions.Length];
+
 
         public dailyQuestionForm()
         {
             InitializeComponent();
+            DatabaseSetup.InitializeDatabase();
 
             // radiobuttons
             radioButtonOptions[0] = radioButton1;
@@ -60,33 +63,58 @@ namespace AutismBehaviourTracker
         }
 
 
-        public void SaveResponse(string question, string answer)
+        public void SaveResponse()
         {
-            string currentDate = DateTime.Now.ToString("MMMM dd, yyyy HH:mm:ss");
+            // array to hold the selected answers for each question
+            int[] responses = new int[dailyQuestionsClass.questions.Length];
 
-            using (System.Data.SQLite.SQLiteConnection conn = new SQLiteConnection(DatabaseSetup.connectionString))
+            // collect the selected answer for the current question 
+            responses[currentQuestionIndex] = GetSelectedAnswer();
+
+            // save the responses array to the database
+            DatabaseSetup.SaveResponse(responses);  
+
+            // move to the next question
+            currentQuestionIndex++;
+
+            // check if all questions have been answered otherwise continue showing the next question
+            if (currentQuestionIndex < dailyQuestionsClass.questions.Length)
             {
-                conn.Open();
-
-                string query = "INSERT INTO questionsResponses (question, answer, responseDate) VALUES (@question, @answer, @responseDate)";
-                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@question", question);
-                    cmd.Parameters.AddWithValue("@answer", answer);
-                    cmd.Parameters.AddWithValue("@responseDate", currentDate);
-                    cmd.ExecuteNonQuery();
-                }
+                DisplayNextQuestion();
             }
+            else
+            {
+                // show msg when all questions are submitted
+                MessageBox.Show("Questions Submitted!");
+                this.Close();
+            }
+
+            // clear the radio buttons for the next question
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            radioButton5.Checked = false;
+
+            // disable the submit button until the next answer is selected
+            submitButton.Enabled = false;
         }
+
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-           
             // get the selected answer from the radio buttons
-            string selectedAnswer = GetSelectedAnswer();
+            int selectedAnswer = GetSelectedAnswer();
 
-            // save the response to the database
-            SaveResponse(dailyQuestionsClass.questions[currentQuestionIndex], selectedAnswer);
+            // store the selected answer in the responses array
+            responses[currentQuestionIndex] = selectedAnswer;
+
+            // if it's the last question, save the responses to the database
+            if (currentQuestionIndex == dailyQuestionsClass.questions.Length - 1)
+            {
+                // save all the responses to the database when the last question is reached
+                DatabaseSetup.SaveResponse(responses);
+            }
 
             // move to the next question
             currentQuestionIndex++;
@@ -94,7 +122,7 @@ namespace AutismBehaviourTracker
             // display the next question
             DisplayNextQuestion();
 
-            // clear the radio buttons
+            // clear the radio buttons for the next question
             radioButton1.Checked = false;
             radioButton2.Checked = false;
             radioButton3.Checked = false;
@@ -105,14 +133,35 @@ namespace AutismBehaviourTracker
         }
 
         // get the selected answer based on the radio buttons
-        private string GetSelectedAnswer()
+        private int GetSelectedAnswer()
         {
-            if (radioButton1.Checked) return radioButton1.Text;
-            if (radioButton2.Checked) return radioButton2.Text;
-            if (radioButton3.Checked) return radioButton3.Text;
-            if (radioButton4.Checked) return radioButton4.Text;
-            if (radioButton5.Checked) return radioButton5.Text;
-            return string.Empty; 
+            if (radioButton1.Checked)
+            {
+                MessageBox.Show("Selected Answer: 1");
+                return 1;
+            }
+            if (radioButton2.Checked)
+            {
+                MessageBox.Show("Selected Answer: 2");
+                return 2;
+            }
+            if (radioButton3.Checked)
+            {
+                MessageBox.Show("Selected Answer: 3");
+                return 3;
+            }
+            if (radioButton4.Checked)
+            {
+                MessageBox.Show("Selected Answer: 4");
+                return 4;
+            }
+            if (radioButton5.Checked)
+            {
+                MessageBox.Show("Selected Answer: 5");
+                return 5;
+            }
+
+            return 0;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -123,6 +172,11 @@ namespace AutismBehaviourTracker
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
            submitButton.Enabled = true; 
+        }
+
+        private void dailyQuestionForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

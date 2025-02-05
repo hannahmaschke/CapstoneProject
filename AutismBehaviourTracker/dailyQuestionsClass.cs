@@ -11,7 +11,7 @@ namespace AutismBehaviourTracker
     {
         static public string[] questions =
         {
-            "How many hours did your child sleep last night?",
+            "How many hours did your child sleep last night?", //question1
             "Did your child wake up during the night?",
             "Did your child have any trouble falling asleep?",
             "Did your child have any trouble staying asleep?",

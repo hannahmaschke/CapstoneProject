@@ -93,6 +93,7 @@
             this.previousGraphs.Size = new System.Drawing.Size(187, 23);
             this.previousGraphs.TabIndex = 4;
             this.previousGraphs.Text = "View Previous Graphs";
+            this.previousGraphs.Click += new System.EventHandler(this.previousGraphs_Click);
             // 
             // aboutAutism
             // 
