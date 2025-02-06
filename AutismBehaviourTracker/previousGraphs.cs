@@ -13,13 +13,12 @@ namespace AutismBehaviourTracker
 {
     public partial class previousGraphs : Form
     {
+
         public previousGraphs()
         {
             InitializeComponent();
         }
 
-
-        // load all journal entries from the database
         public static List<string> LoadQuestionResponses()
         {
             List<string> entries = new List<string>();
@@ -35,16 +34,21 @@ namespace AutismBehaviourTracker
                 {
                     while (reader.Read())
                     {
-                        string date = reader.GetString(0);  
-                        List<string> answers = new List<string>();
+                        string date = reader.GetString(0);
+                        int id = reader.GetInt32(1);
+                        StringBuilder entry = new StringBuilder();
 
-                        // start from index 2 because the first two fields in db are date and id
-                        for (int i = 2; i <= 27; i++)  
+                        entry.AppendLine(date);
+                        entry.AppendLine($"ID: {id}");
+
+                        for (int i = 2; i <= 27; i++)
                         {
-                            answers.Add($"Question {i - 1}: {reader.GetInt32(i)} \n");  // format is Question X: Answer
+                            string question = dailyQuestionsClass.questions[i - 2];
+                            int answer = reader.GetInt32(i);
+                            entry.AppendLine($"Question {i - 1}: {question} Response: {answer}");
                         }
 
-                        entries.Add($"Date: {date}\n{string.Join("\n", answers)}\n\n---------------------------------------------------------------------------------------");
+                        entries.Add(entry.ToString() + "\n---------------------------------------------------------------------------------------");
                     }
                 }
             }
@@ -52,17 +56,18 @@ namespace AutismBehaviourTracker
             return entries;
         }
 
-        private void previousGraphs_Load(object sender, EventArgs e)
+        public void previousGraphs_Load(object sender, EventArgs e)
         {
-            // load the question responses
             List<string> responses = LoadQuestionResponses();
+            textBoxResponses.Clear(); 
+            textBoxResponses.Text = string.Join(Environment.NewLine, responses); 
+        }
 
-          // display the previous responses in listbox
-            foreach (string response in responses)
-            {
-                listBoxResponses.Items.Add(response);
-            }
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
-    }
+}
+   
 

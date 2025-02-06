@@ -16,7 +16,9 @@ namespace AutismBehaviourTracker
         RadioButton[] radioButtonOptions = new RadioButton[5];
         private int[] responses = new int[dailyQuestionsClass.questions.Length];
 
-
+        //  note to self: add function to check if there is already
+        // a response for the current date and if so ask the user if they 
+        // want to overwrite the response or not
         public dailyQuestionForm()
         {
             InitializeComponent();

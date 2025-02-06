@@ -1,71 +1,68 @@
-﻿namespace AutismBehaviourTracker
+﻿using System.Windows.Forms;
+
+namespace AutismBehaviourTracker
 {
     partial class previousGraphs
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBoxResponses = new System.Windows.Forms.ListBox();
+            this.label = new System.Windows.Forms.Label();
+            this.textBoxResponses = new System.Windows.Forms.TextBox();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // label
             // 
-            this.label1.Location = new System.Drawing.Point(78, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label.BackColor = System.Drawing.Color.Transparent;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(332, 44);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(324, 36);
+            this.label.TabIndex = 0;
+            this.label.Text = "Previous Responses";
             // 
-            // listBoxResponses
+            // textBoxResponses
             // 
-            this.listBoxResponses.FormattingEnabled = true;
-            this.listBoxResponses.ItemHeight = 20;
-            this.listBoxResponses.Location = new System.Drawing.Point(3, 19);
-            this.listBoxResponses.Name = "listBoxResponses";
-            this.listBoxResponses.Size = new System.Drawing.Size(785, 424);
-            this.listBoxResponses.TabIndex = 1;
+            this.textBoxResponses.Location = new System.Drawing.Point(34, 113);
+            this.textBoxResponses.Multiline = true;
+            this.textBoxResponses.Name = "textBoxResponses";
+            this.textBoxResponses.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxResponses.Size = new System.Drawing.Size(975, 480);
+            this.textBoxResponses.TabIndex = 1;
+            this.textBoxResponses.WordWrap = false;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.BackColor = System.Drawing.Color.NavajoWhite;
+            this.cancelButton.Location = new System.Drawing.Point(13, 611);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(199, 32);
+            this.cancelButton.TabIndex = 2;
+            this.cancelButton.Text = "Go Back to Main Menu";
+            this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // previousGraphs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBoxResponses);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.LightSalmon;
+            this.ClientSize = new System.Drawing.Size(1043, 655);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.textBoxResponses);
+            this.Controls.Add(this.label);
             this.Name = "previousGraphs";
             this.Text = "previousGraphs";
             this.Load += new System.EventHandler(this.previousGraphs_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
-        #endregion
+        //#endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBoxResponses;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.TextBox textBoxResponses;
+        private Button cancelButton;
     }
 }
