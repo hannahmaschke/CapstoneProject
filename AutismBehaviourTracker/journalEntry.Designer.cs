@@ -34,9 +34,10 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.previousEntryTextBox = new System.Windows.Forms.RichTextBox();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.previousEntryLabel = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.comboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,30 +95,11 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.previousEntryTextBox);
-            this.panel1.Controls.Add(this.vScrollBar1);
+            this.panel1.Controls.Add(this.richTextBox);
             this.panel1.Location = new System.Drawing.Point(744, 194);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(449, 336);
             this.panel1.TabIndex = 6;
-            // 
-            // previousEntryTextBox
-            // 
-            this.previousEntryTextBox.BackColor = System.Drawing.Color.White;
-            this.previousEntryTextBox.Location = new System.Drawing.Point(0, 3);
-            this.previousEntryTextBox.Name = "previousEntryTextBox";
-            this.previousEntryTextBox.ReadOnly = true;
-            this.previousEntryTextBox.Size = new System.Drawing.Size(416, 330);
-            this.previousEntryTextBox.TabIndex = 4;
-            this.previousEntryTextBox.Text = "";
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.vScrollBar1.Location = new System.Drawing.Point(423, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(26, 336);
-            this.vScrollBar1.TabIndex = 0;
             // 
             // previousEntryLabel
             // 
@@ -129,12 +111,41 @@
             this.previousEntryLabel.TabIndex = 7;
             this.previousEntryLabel.Text = "Read previous entries:";
             // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.deleteButton.Location = new System.Drawing.Point(1074, 536);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(116, 29);
+            this.deleteButton.TabIndex = 8;
+            this.deleteButton.Text = "Delete entry";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // richTextBox
+            // 
+            this.richTextBox.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(443, 330);
+            this.richTextBox.TabIndex = 0;
+            this.richTextBox.Text = "";
+            // 
+            // comboBox
+            // 
+            this.comboBox.FormattingEnabled = true;
+            this.comboBox.Location = new System.Drawing.Point(744, 536);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(324, 28);
+            this.comboBox.TabIndex = 9;
+            // 
             // journalEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(1240, 696);
+            this.Controls.Add(this.comboBox);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.previousEntryLabel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.newEntryTextBox);
@@ -160,8 +171,9 @@
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.RichTextBox previousEntryTextBox;
         private System.Windows.Forms.Label previousEntryLabel;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.RichTextBox richTextBox;
+        private System.Windows.Forms.ComboBox comboBox;
     }
 }

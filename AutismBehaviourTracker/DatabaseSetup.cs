@@ -35,7 +35,7 @@ namespace AutismBehaviourTracker
             {
                 conn.Open();
 
-                string query = "SELECT date, entryText FROM journalEntries ORDER BY Id ASC";
+                string query = "SELECT date, entryText FROM journalEntries ORDER BY date DESC"; // order by date descending so that the newest entries are shown first
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
@@ -43,7 +43,10 @@ namespace AutismBehaviourTracker
                     {
                         string date = reader.GetString(0);
                         string entryText = reader.GetString(1);
-                        entries.Add($"Date: {date}\n{entryText}\n\n---------------------------------------------------------------------------------------");
+
+                        // combine the date and entryText to be displayed in the textbx
+                        string formattedEntry = $"Date: {date} \n\r {entryText}";  
+                        entries.Add(formattedEntry);
                     }
                 }
             }
@@ -103,6 +106,22 @@ namespace AutismBehaviourTracker
                             createCmd.ExecuteNonQuery();
                         }
                     }
+                }
+            }
+        }
+
+        // Delete a journal entry from the database by date
+        public static void DeleteJournalEntry(string date)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "DELETE FROM journalEntries WHERE date = @date";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@date", date);
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
