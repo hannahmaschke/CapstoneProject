@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="questionLogicClass.cs" />
     <EmbeddedResource Include="aboutAutismForm.resx">
       <DependentUpon>aboutAutismForm.cs</DependentUpon>
     </EmbeddedResource>

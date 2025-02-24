@@ -105,6 +105,9 @@ namespace AutismBehaviourTracker
 
         private void submitButton_Click(object sender, EventArgs e)
         {
+            // check if there is already a submission for today's date
+            CheckForExistingSubmission();
+
             // get the selected answer from the radio buttons
             int selectedAnswer = GetSelectedAnswer();
 
@@ -139,32 +142,73 @@ namespace AutismBehaviourTracker
         {
             if (radioButton1.Checked)
             {
-                MessageBox.Show("Selected Answer: 1");
+                //MessageBox.Show("Selected Answer: 1");
                 return 1;
             }
             if (radioButton2.Checked)
             {
-                MessageBox.Show("Selected Answer: 2");
+                //MessageBox.Show("Selected Answer: 2");
                 return 2;
             }
             if (radioButton3.Checked)
             {
-                MessageBox.Show("Selected Answer: 3");
+                //MessageBox.Show("Selected Answer: 3");
                 return 3;
             }
             if (radioButton4.Checked)
             {
-                MessageBox.Show("Selected Answer: 4");
+                //MessageBox.Show("Selected Answer: 4");
                 return 4;
             }
             if (radioButton5.Checked)
             {
-                MessageBox.Show("Selected Answer: 5");
+                //MessageBox.Show("Selected Answer: 5");
                 return 5;
             }
 
             return 0;
         }
+
+        // function that checks if there is already a submission for today's date
+        public void CheckForExistingSubmission()
+        {
+            // get the current date
+            string currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+            // check if there is already a submission for today's date
+            using (SQLiteConnection conn = new SQLiteConnection(DatabaseSetup.connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM questionResponses WHERE date = @date";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@date", currentDate);
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            // show a popup asking the user if they want to overwrite the submission
+                            DialogResult result = MessageBox.Show("There is already a submission for today's date. Do you want to overwrite it?", "Overwrite Submission", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
+                            {
+                                // delete the existing submission
+                                string deleteQuery = "DELETE FROM questionResponses WHERE date = @date";
+                                using (SQLiteCommand deleteCmd = new SQLiteCommand(deleteQuery, conn))
+                                {
+                                    deleteCmd.Parameters.AddWithValue("@date", currentDate);
+                                    deleteCmd.ExecuteNonQuery();
+                                }
+                            }
+                            else
+                            {
+                                // close the form if the user chooses not to overwrite the submission
+                                this.Close();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
