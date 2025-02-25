@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Windows.Forms;
 
 namespace AutismBehaviourTracker
 {
@@ -163,7 +164,76 @@ namespace AutismBehaviourTracker
             }
         }
 
-   
+        public static double AverageSleepLast7Days()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalSleep = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question1 FROM questionResponses WHERE date = @date"; // select question1- asks about sleep hours
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int sleepHours)) 
+                            {
+                                totalSleep += sleepHours;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question1 is not a valid integer for this date
+                                Console.WriteLine($"Invalid sleep hours value for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSleep = totalSleep / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    //return totalSleep / validEntryCount;
+                    MessageBox.Show($"Average sleep hours for the past 7 days: {averageSleep}");
+                    return averageSleep;
+                }
+                else
+                {
+                    return 0; 
+                }
+            }
+        }
+
+        public static bool CheckJournalEntryExists(string date)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM journalEntries WHERE date = @date";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@date", date);
+                    long count = (long)cmd.ExecuteScalar();  // use ExecuteScalar to get the count
+
+                    return count > 0; // return true if count > 0 which means thee entry exists
+                }
+            }
+        }
     }
         }
     

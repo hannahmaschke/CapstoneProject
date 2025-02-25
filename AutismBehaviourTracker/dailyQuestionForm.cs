@@ -15,10 +15,10 @@ namespace AutismBehaviourTracker
     {
         RadioButton[] radioButtonOptions = new RadioButton[5];
         private int[] responses = new int[dailyQuestionsClass.questions.Length];
+        // parallel array for sublabels- this is to change the subLabel for question1
+        private string[] questionSublabels = new string[dailyQuestionsClass.questions.Length];
 
-        //  note to self: add function to check if there is already
-        // a response for the current date and if so ask the user if they 
-        // want to overwrite the response or not
+        
         public dailyQuestionForm()
         {
             InitializeComponent();
@@ -31,6 +31,9 @@ namespace AutismBehaviourTracker
             radioButtonOptions[3] = radioButton4;
             radioButtonOptions[4] = radioButton5;
 
+            // initialize sublabels- set values for each question
+            InitializeQuestionSublabels(); 
+
             // display the first question when the form is loaded
             DisplayNextQuestion();
         }
@@ -38,6 +41,75 @@ namespace AutismBehaviourTracker
         // variables
         // keep track of the current question index
         private int currentQuestionIndex = 0;
+
+
+        // function to change the subLabel depending on the question asked
+        // this is to change the subLabel for questions that need a specific input and also to add the question the user is currently on
+        private void InitializeQuestionSublabels()
+        {
+            // initialize sublabels - set the sublabel for question 1
+            questionSublabels[0] = "Question 1 of 29:\n Select 1 for 1-3 hours slept, 2 for 4-5 hours slept, 3 for 6-7 hours slept, 4 for 8-9 hours slept, or 5 for 10+ hours slept.";
+
+            questionSublabels[1] = "Question 2 of 29:\n 1 meaning no awakenings during the night, 2 meaning woke up once and fell back asleep quickly, 3 meaning woke up once and took awhile to fall back asleep, 4 meaning woke up at least twice, 5 meaning several awakenings";
+
+            questionSublabels[2] = "Question 3 of 29: \n 1 meaning no problems, 5 meaning great difficulty falling asleep";
+
+            questionSublabels[3] = "Question 4 of 29: \n 1 meaning no problems, 5 meaning great difficulty staying asleep";
+
+            questionSublabels[4] = "Question 5 of 29: \n 1 meaning yes they were given meds to help fall asleep, 5 meaning they were not given meds";
+
+            questionSublabels[5] = "Question 6 of 29: \n 1 meaning no problems, 5 meaning great difficulty interacting with others";
+
+            questionSublabels[6] = "Question 7 of 29: \n 1 meaning no problems, 5 meaning great difficulty making eye contact";
+
+            questionSublabels[7] = "Question 8 of 29: \n 1 meaning no violence whatsoever, 5 meaning your child was very violent today";
+
+            questionSublabels[8] = "Question 9 of 29: \n 1 meaning no meltdowns, 5 meaning your child had a meltdown";
+
+            questionSublabels[9] = "Question 10 of 29: \n 1 meaning no problems, 5 meaning great difficulty transitioning between activities";
+
+            questionSublabels[10] = "Question 11 of 29: \n 1 meaning socialized more than usual, 3 meaning socialized an average amount, 5 meaning socialized less than usual";
+
+            questionSublabels[11] = "Question 12 of 29: \n 1 meaning refused no meals, 5 meaning refused all meals";
+
+            questionSublabels[12] = "Question 13 of 29: \n 1 meaning ate more than usual, 3 meaning ate an average amount, 5 meaning ate less than usual";
+
+            questionSublabels[13] = "Question 14 of 29: \n 1 meaning they did NOT avoid loud noise, 5 meaning that they often avoided loud stimuli";
+
+            questionSublabels[14] = "Question 15 of 29: \n 1 meaning they did not avoid bright lights, 5 meaning they often avoided bright lights";
+
+            questionSublabels[15] = "Question 16 of 29: \n 1 meaning they did not avoid touching certain textures, 5 meaning they often avoided touching certain textures";
+
+            questionSublabels[16] = "Question 17 of 29: \n 1 meaning they did not stim more than usual, 5 meaning they stimmed more than usual";
+
+            questionSublabels[17] = "Question 18 of 29: \n 1 meaning they did not exhibit sensory overload symptoms, 5 meaning they did exhibit sensory overload symptoms";
+
+            questionSublabels[18] = "Question 19 of 29: \n 1 meaning they did not climb furniture, 5 meaning they climbed furniture frequently";
+
+            questionSublabels[19] = "Question 20 of 29: \n 1 meaning they did not spin in circles, 5 meaning they spun in circles frequently";
+
+            questionSublabels[20] = "Question 21 of 29: \n 1 meaning they did not jump up and down, 5 meaning they jumped up and down frequently";
+
+            questionSublabels[21] = "Question 22 of 29: \n 1 meaning they did not seek tactile stimulation, 5 meaning they sought tactile stimulation frequently";
+
+            questionSublabels[22] = "Question 23 of 29: \n 1 meaning they did not seek vestibular stimulation, 5 meaning they sought vestibular stimulation frequently";
+
+            questionSublabels[23] = "Question 24 of 29: \n 1 meaning they did not seek proprioceptive stimulation, 5 meaning they sought proprioceptive stimulation frequently";
+
+            questionSublabels[24] = "Question 25 of 29: \n 1 meaning they did not seek oral stimulation, 5 meaning they sought oral stimulation frequently";
+
+            questionSublabels[25] = "Question 26 of 29: \n 1 meaning they did not seek auditory stimulation, 5 meaning they sought auditory stimulation frequently";
+
+            questionSublabels[26] = "Question 27 of 29: \n 1 meaning they did not seek visual stimulation, 5 meaning they sought visual stimulation frequently";
+
+            questionSublabels[27] = "Question 28 of 29: \n 1 meaning they did not seek olfactory stimulation, 5 meaning they sought olfactory stimulation frequently";
+
+            questionSublabels[28] = "Question 29 of 29: \n 1 meaning they did not stomp and crash into things, 5 meaning they stomped and crashed into things frequently";
+
+
+
+
+        }
 
 
         // function to display the current question
@@ -48,6 +120,10 @@ namespace AutismBehaviourTracker
             {
                 // display the current question
                 questionLabel.Text = dailyQuestionsClass.questions[currentQuestionIndex];
+
+                // update the sublabel
+                subLabel.Text = questionSublabels[currentQuestionIndex];
+
             }
             else
             {
