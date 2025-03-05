@@ -389,7 +389,6 @@ namespace AutismBehaviourTracker
         }
 
         // average eye contact score
-        // averages for social interactions
         public static double AverageEyeContact()
         {
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
@@ -438,6 +437,1172 @@ namespace AutismBehaviourTracker
                     MessageBox.Show($"Average eye contact score over the past 7 days: {averageEyeContactScore}");
 
                     return averageEyeContactScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average aggression score
+        public static double AverageViolence()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalViolenceScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question8 FROM questionResponses WHERE date = @date"; // select question8- asks about the daily violence committed
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalViolenceScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question8 is not a valid integer for this date
+                                Console.WriteLine($"Invalid violence score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageViolenceScore = totalViolenceScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average violence score over the past 7 days: {averageViolenceScore}");
+
+                    return averageViolenceScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average number of days in which the child had a meltdown
+        public static double AverageDaysWithMeltdown()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalDaysWithMeltdowns = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question9 FROM questionResponses WHERE date = @date"; // select question9- asks about the number of days a meltdown was had
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalDaysWithMeltdowns += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question9 is not a valid integer for this date
+                                Console.WriteLine($"Invalid meltdown count for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageDaysWithMeltdowns = totalDaysWithMeltdowns / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average violence score over the past 7 days: {averageDaysWithMeltdowns}");
+
+                    return averageDaysWithMeltdowns;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average score for transitioning between activities
+        public static double AverageDifficultyTransitioning()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalTransitionScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question10 FROM questionResponses WHERE date = @date"; // select question10- asks about the difficulty transitioning between activities
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalTransitionScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question10 is not a valid integer for this date
+                                Console.WriteLine($"Invalid transition score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageTransitionScore = totalTransitionScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average violence score over the past 7 days: {averageTransitionScore}");
+
+                    return averageTransitionScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average socialization level
+        public static double AverageSocializationAmount()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalSocializationScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question11 FROM questionResponses WHERE date = @date"; // select question11- asks about the level of socialization per day
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalSocializationScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question11 is not a valid integer for this date
+                                Console.WriteLine($"Invalid socialization count for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSocializationScore = totalSocializationScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average violence score over the past 7 days: {averageSocializationScore}");
+
+                    return averageSocializationScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average number of days in which a meal was refused
+        public static double AverageMealRefusedScore()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalRefusalScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question12 FROM questionResponses WHERE date = @date"; // select question12- asks about meals refused
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalRefusalScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question12 is not a valid integer for this date
+                                Console.WriteLine($"Invalid meal refusal score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageRefusalScore = totalRefusalScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average meal refusal score over the past 7 days: {averageRefusalScore}");
+
+                    return averageRefusalScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average amount eaten 
+        public static double AverageAmountEaten()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalAppetiteScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question13 FROM questionResponses WHERE date = @date"; // select question13- asks about amount eaten
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalAppetiteScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question13 is not a valid integer for this date
+                                Console.WriteLine($"Invalid appetite score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageAppetiteScore = totalAppetiteScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average appetite score over the past 7 days: {averageAppetiteScore}");
+
+                    return averageAppetiteScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // Average stimuli functions
+
+        // average loud stimuli avoidance score 
+        public static double AverageLoudStimuliAvoided()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalAvoidanceScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question14 FROM questionResponses WHERE date = @date"; // select question14- asks about days that the child avoided loud noise
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalAvoidanceScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question14 is not a valid integer for this date
+                                Console.WriteLine($"Invalid avoidance score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageAvoidanceScore = totalAvoidanceScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average loud stimuli avoidance score over the past 7 days: {averageAvoidanceScore}");
+
+                    return averageAvoidanceScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average bright light stimuli avoidance score 
+        public static double AverageVisualStimuliAvoided()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalAvoidanceScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question15 FROM questionResponses WHERE date = @date"; // select question15- asks about days that the child avoided bright lights
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalAvoidanceScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question15 is not a valid integer for this date
+                                Console.WriteLine($"Invalid avoidance score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageAvoidanceScore = totalAvoidanceScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average visual stimuli avoidance score over the past 7 days: {averageAvoidanceScore}");
+
+                    return averageAvoidanceScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average bright light stimuli avoidance score 
+        public static double AverageTactileStimuliAvoided()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalAvoidanceScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question16 FROM questionResponses WHERE date = @date"; // select question16- asks about days that the child avoided certain textures
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalAvoidanceScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question16 is not a valid integer for this date
+                                Console.WriteLine($"Invalid avoidance score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageAvoidanceScore = totalAvoidanceScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average tactile stimuli avoidance score over the past 7 days: {averageAvoidanceScore}");
+
+                    return averageAvoidanceScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average stim score 
+        public static double AverageStimScore()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalStimScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question17 FROM questionResponses WHERE date = @date"; // select question17- asks about the level of stimming each day
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalStimScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question17 is not a valid integer for this date
+                                Console.WriteLine($"Invalid stim score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageStimScore = totalStimScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average stim score over the past 7 days: {averageStimScore}");
+
+                    return averageStimScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average sensory overload score
+        public static double AverageSensoryOverload()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalOverloadScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question18 FROM questionResponses WHERE date = @date"; // select question18- asks about the days with sensory overload
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalOverloadScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question18 is not a valid integer for this date
+                                Console.WriteLine($"Invalid sensory overload score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageOverloadScore = totalOverloadScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average sensory overload score over the past 7 days: {averageOverloadScore}");
+
+                    return averageOverloadScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average hyperactivity score- combines questions 19, 20,21, 29
+        public static double AverageHyperactivity()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalClimbScore = 0;
+                double totalSpinScore = 0;
+                double totalJumpScore = 0;
+                double totalCrashScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries- climb score
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question19 FROM questionResponses WHERE date = @date"; // select question19- asks about the days the child climbed furniture
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalClimbScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question19 is not a valid integer for this date
+                                Console.WriteLine($"Invalid climb score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                // loop through the past 7 entries for spin score
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question20 FROM questionResponses WHERE date = @date"; // select question20- asks about the days the child spun in circles
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalSpinScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question20 is not a valid integer for this date
+                                Console.WriteLine($"Invalid spin score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                // loop through the past 7 entries for jump score
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question21 FROM questionResponses WHERE date = @date"; // select question21- asks about the days the child jumped around
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalJumpScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question21 is not a valid integer for this date
+                                Console.WriteLine($"Invalid jump score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                // loop through the past 7 entries for crashing score
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question29 FROM questionResponses WHERE date = @date"; // select question29- asks about the days the child crashed into things
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalCrashScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question29 is not a valid integer for this date
+                                Console.WriteLine($"Invalid crash score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageClimbScore = totalClimbScore / validEntryCount;
+                double averageSpinScore = totalSpinScore / validEntryCount;
+                double averageJumpScore = totalJumpScore / validEntryCount;
+                double averageCrashScore = totalCrashScore / validEntryCount;
+
+                double averageHyperactivityScore = (averageClimbScore + averageSpinScore + averageJumpScore + averageCrashScore) / 4;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average hyperactivity score over the past 7 days: {averageHyperactivityScore}");
+
+                    return averageHyperactivityScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // seeking out sensory stimuli functions
+
+        // average tactile stimuli seeked score
+        public static double AverageTactileStimulationSeeked()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalSeekedScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question22 FROM questionResponses WHERE date = @date"; // select question22- asks about the days the child seeked out tactile stimulation
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalSeekedScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question22 is not a valid integer for this date
+                                Console.WriteLine($"Invalid tactile stimulation seeking score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSeekedScore = totalSeekedScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average tactile stimulation seeking score over the past 7 days: {averageSeekedScore}");
+
+                    return averageSeekedScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average vestibular stimuli seeked score
+        public static double AverageVestibularStimulationSeeked()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalSeekedScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question23 FROM questionResponses WHERE date = @date"; // select question23- asks about the days the child seeked out vestibular stimulation
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalSeekedScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question23 is not a valid integer for this date
+                                Console.WriteLine($"Invalid vestibular stimulation seeking score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSeekedScore = totalSeekedScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average vestibular stimulation seeking score over the past 7 days: {averageSeekedScore}");
+
+                    return averageSeekedScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average proprioceptive stimuli seeked score
+        public static double AverageProprioceptiveStimulationSeeked()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalSeekedScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question24 FROM questionResponses WHERE date = @date"; // select question24- asks about the days the child seeked out proprioceptive stimulation
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalSeekedScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question24 is not a valid integer for this date
+                                Console.WriteLine($"Invalid proprioceptive stimulation seeking score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSeekedScore = totalSeekedScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average proprioceptive stimulation seeking score over the past 7 days: {averageSeekedScore}");
+
+                    return averageSeekedScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average oral stimuli seeked score
+        public static double AverageOralStimulationSeeked()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalSeekedScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question25 FROM questionResponses WHERE date = @date"; // select question25- asks about the days the child seeked out oral stimulation
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalSeekedScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question25 is not a valid integer for this date
+                                Console.WriteLine($"Invalid oral stimulation seeking score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSeekedScore = totalSeekedScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average oral stimulation seeking score over the past 7 days: {averageSeekedScore}");
+
+                    return averageSeekedScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average auditory stimuli seeked score
+        public static double AverageAuditoryStimulationSeeked()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalSeekedScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question26 FROM questionResponses WHERE date = @date"; // select question26- asks about the days the child seeked out auditory stimulation
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalSeekedScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question26 is not a valid integer for this date
+                                Console.WriteLine($"Invalid auditory stimulation seeking score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSeekedScore = totalSeekedScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average auditory stimulation seeking score over the past 7 days: {averageSeekedScore}");
+
+                    return averageSeekedScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average visual stimuli seeked score
+        public static double AverageVisualStimulationSeeked()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalSeekedScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question27 FROM questionResponses WHERE date = @date"; // select question27- asks about the days the child seeked out visual stimulation
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalSeekedScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question27 is not a valid integer for this date
+                                Console.WriteLine($"Invalid visual stimulation seeking score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSeekedScore = totalSeekedScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average visual stimulation seeking score over the past 7 days: {averageSeekedScore}");
+
+                    return averageSeekedScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average olfactory stimuli seeked score
+        public static double AverageOlfactoryStimulationSeeked()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalSeekedScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question28 FROM questionResponses WHERE date = @date"; // select question28- asks about the days the child seeked out olfactory stimulation
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalSeekedScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question28 is not a valid integer for this date
+                                Console.WriteLine($"Invalid visual stimulation seeking score for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSeekedScore = totalSeekedScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    MessageBox.Show($"Average olfactory stimulation seeking score over the past 7 days: {averageSeekedScore}");
+
+                    return averageSeekedScore;
                 }
                 else
                 {

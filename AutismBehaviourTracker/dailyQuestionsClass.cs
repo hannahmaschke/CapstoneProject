@@ -32,13 +32,13 @@ namespace AutismBehaviourTracker
             "Did your child climb furniture today?", //19
             "Did your child spin in circles today?", //20
             "Did your child jump up and down today?", //21
-            "Did your child seek tactile stimulation today? (Eg seek out soft fabrics, or a material that they find comforting to touch.",
-            "Did your child seek vestibular stimulation today? (Eg spinning, swinging, rocking, bouncing, jumping)",
-            "Did your child seek proprioceptive stimulation today? (Eg jumping, crashing into things, pushing, pulling, lifting heavy objects)",
-            "Did your child seek oral stimulation today? (Eg chewing on things, licking things, biting things)",
-            "Did your child seek auditory stimulation today? (Eg listening to music, making loud noises, seeking out loud noises)",
-            "Did your child seek visual stimulation today? (Eg watching TV, looking at bright lights, looking at spinning objects)",
-            "Did your child seek olfactory stimulation today? (Eg smelling things, seeking out certain smells)",
+            "Did your child seek tactile stimulation today? (Eg seek out soft fabrics, or a material that they find comforting to touch.",//22
+            "Did your child seek vestibular stimulation today? (Eg spinning, swinging, rocking, bouncing, jumping)",//23
+            "Did your child seek proprioceptive stimulation today? (Eg jumping, crashing into things, pushing, pulling, lifting heavy objects)",//24
+            "Did your child seek oral stimulation today? (Eg chewing on things, licking things, biting things)",//25
+            "Did your child seek auditory stimulation today? (Eg listening to music, making loud noises, seeking out loud noises)",//26
+            "Did your child seek visual stimulation today? (Eg watching TV, looking at bright lights, looking at spinning objects)",//27
+            "Did your child seek olfactory stimulation today? (Eg smelling things, seeking out certain smells)",//28
             "Did your child stomp and crash into things today?" //29
 
         };
