@@ -61,5 +61,21 @@ namespace AutismBehaviourTracker
             previousGraphs.ShowDialog();
             this.Show();
         }
+
+        private void advicePageLabel_Click(object sender, EventArgs e)
+        {
+            adviceForm adviceForm = new adviceForm();
+            this.Hide();
+            adviceForm.ShowDialog();
+            this.Show();
+        }
+
+        private void visualizeDataLabel_Click(object sender, EventArgs e)
+        {
+            visualizeData visualizeData = new visualizeData();
+            this.Hide();
+            visualizeData.ShowDialog();
+            this.Show();
+        }
     }
 }

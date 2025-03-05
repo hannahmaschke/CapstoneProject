@@ -35,6 +35,8 @@
             this.journalEntries = new System.Windows.Forms.Label();
             this.previousGraphs = new System.Windows.Forms.Label();
             this.aboutAutism = new System.Windows.Forms.Label();
+            this.advicePageLabel = new System.Windows.Forms.Label();
+            this.visualizeDataLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainMenuLabel
@@ -88,11 +90,11 @@
             this.previousGraphs.AutoSize = true;
             this.previousGraphs.BackColor = System.Drawing.Color.Transparent;
             this.previousGraphs.Font = new System.Drawing.Font("Tw Cen MT", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previousGraphs.Location = new System.Drawing.Point(287, 271);
+            this.previousGraphs.Location = new System.Drawing.Point(287, 270);
             this.previousGraphs.Name = "previousGraphs";
-            this.previousGraphs.Size = new System.Drawing.Size(187, 23);
+            this.previousGraphs.Size = new System.Drawing.Size(208, 23);
             this.previousGraphs.TabIndex = 4;
-            this.previousGraphs.Text = "View Previous Graphs";
+            this.previousGraphs.Text = "View Previous Responses";
             this.previousGraphs.Click += new System.EventHandler(this.previousGraphs_Click);
             // 
             // aboutAutism
@@ -100,12 +102,36 @@
             this.aboutAutism.AutoSize = true;
             this.aboutAutism.BackColor = System.Drawing.Color.Transparent;
             this.aboutAutism.Font = new System.Drawing.Font("Tw Cen MT", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aboutAutism.Location = new System.Drawing.Point(317, 313);
+            this.aboutAutism.Location = new System.Drawing.Point(321, 395);
             this.aboutAutism.Name = "aboutAutism";
             this.aboutAutism.Size = new System.Drawing.Size(113, 23);
             this.aboutAutism.TabIndex = 5;
             this.aboutAutism.Text = "About Autism";
             this.aboutAutism.Click += new System.EventHandler(this.aboutAutism_Click);
+            // 
+            // advicePageLabel
+            // 
+            this.advicePageLabel.AutoSize = true;
+            this.advicePageLabel.BackColor = System.Drawing.Color.Transparent;
+            this.advicePageLabel.Font = new System.Drawing.Font("Tw Cen MT", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.advicePageLabel.Location = new System.Drawing.Point(250, 312);
+            this.advicePageLabel.Name = "advicePageLabel";
+            this.advicePageLabel.Size = new System.Drawing.Size(288, 23);
+            this.advicePageLabel.TabIndex = 6;
+            this.advicePageLabel.Text = "Advice based on your child\'s week";
+            this.advicePageLabel.Click += new System.EventHandler(this.advicePageLabel_Click);
+            // 
+            // visualizeDataLabel
+            // 
+            this.visualizeDataLabel.AutoSize = true;
+            this.visualizeDataLabel.BackColor = System.Drawing.Color.Transparent;
+            this.visualizeDataLabel.Font = new System.Drawing.Font("Tw Cen MT", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visualizeDataLabel.Location = new System.Drawing.Point(280, 356);
+            this.visualizeDataLabel.Name = "visualizeDataLabel";
+            this.visualizeDataLabel.Size = new System.Drawing.Size(223, 23);
+            this.visualizeDataLabel.TabIndex = 7;
+            this.visualizeDataLabel.Text = "Visualize your child\'s week";
+            this.visualizeDataLabel.Click += new System.EventHandler(this.visualizeDataLabel_Click);
             // 
             // mainMenu
             // 
@@ -113,6 +139,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.visualizeDataLabel);
+            this.Controls.Add(this.advicePageLabel);
             this.Controls.Add(this.aboutAutism);
             this.Controls.Add(this.previousGraphs);
             this.Controls.Add(this.journalEntries);
@@ -137,6 +165,8 @@
         private System.Windows.Forms.Label journalEntries;
         private System.Windows.Forms.Label previousGraphs;
         private System.Windows.Forms.Label aboutAutism;
+        private System.Windows.Forms.Label advicePageLabel;
+        private System.Windows.Forms.Label visualizeDataLabel;
     }
 }
 
