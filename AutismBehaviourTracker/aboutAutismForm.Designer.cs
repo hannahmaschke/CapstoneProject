@@ -227,6 +227,7 @@
             this.MaximizeBox = false;
             this.Name = "aboutAutismForm";
             this.Text = "About Autism";
+            this.Load += new System.EventHandler(this.aboutAutismForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

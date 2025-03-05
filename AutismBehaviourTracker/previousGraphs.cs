@@ -60,6 +60,8 @@ namespace AutismBehaviourTracker
         {
             // debug: show the average amount of sleep over the past 7 entries
             DatabaseSetup.AverageSleepLast7Days();
+            DatabaseSetup.AverageAwakenings();
+            DatabaseSetup.AverageDifficultyFallingAsleep();
             List<string> responses = LoadQuestionResponses();
             textBoxResponses.Clear(); 
             textBoxResponses.Text = string.Join(Environment.NewLine, responses); 

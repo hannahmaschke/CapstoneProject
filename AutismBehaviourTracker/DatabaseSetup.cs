@@ -219,6 +219,233 @@ namespace AutismBehaviourTracker
             }
         }
 
+        public static double AverageAwakenings()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalAwakenings = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question2 FROM questionResponses WHERE date = @date"; // select question2- asks about times the child woke up
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int sleepAwakenings))
+                            {
+                                totalAwakenings += sleepAwakenings;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question1 is not a valid integer for this date
+                                Console.WriteLine($"Invalid awakening value for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageAwakenings = totalAwakenings / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    //return totalSleep / validEntryCount;
+                    MessageBox.Show($"Average number of times your child has woken up in the night over the past 7 days: {averageAwakenings}");
+                    return averageAwakenings;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average sleep quality- questions 3
+        public static double AverageDifficultyFallingAsleep()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalFallAsleep = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question3 FROM questionResponses WHERE date = @date"; // select question2- asks about times the child woke up
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int fallAsleep))
+                            {
+                                totalFallAsleep += fallAsleep;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question3 is not a valid integer for this date
+                                Console.WriteLine($"Invalid awakening value for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageFallAsleepQuality = totalFallAsleep / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    //return totalSleep / validEntryCount;
+                    MessageBox.Show($"Average difficulty falling asleep over the past 7 days: {averageFallAsleepQuality}");
+
+                    return averageFallAsleepQuality;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // averages for social interactions
+        public static double AverageSocialInteractions()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalInteractionCount = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question6 FROM questionResponses WHERE date = @date"; // select question6- asks about the daily social interactions
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalInteractionCount += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question4 is not a valid integer for this date
+                                Console.WriteLine($"Invalid value for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageSocialInteraction = totalInteractionCount / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    //return totalSleep / validEntryCount;
+                    MessageBox.Show($"Average social interaction score over the past 7 days: {averageSocialInteraction}");
+
+                    return averageSocialInteraction;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
+        // average eye contact score
+        // averages for social interactions
+        public static double AverageEyeContact()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                DateTime currentDate = DateTime.Now;
+                double totalEyeContactScore = 0;
+                int validEntryCount = 0;
+
+                // loop through the past 7 entries
+                for (int i = 0; i < 7; i++)
+                {
+                    DateTime dateToCheck = currentDate.AddDays(-i);
+                    string formattedDate = dateToCheck.ToString("yyyy-MM-dd");
+
+                    string query = "SELECT question7 FROM questionResponses WHERE date = @date"; // select question7- asks about the daily eye contact
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@date", formattedDate);
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value) // need to check for null and DBNull
+                        {
+                            if (int.TryParse(result.ToString(), out int dailyInteraction))
+                            {
+                                totalEyeContactScore += dailyInteraction;
+                                validEntryCount++;
+                            }
+                            else
+                            {
+                                // handle cases where question7 is not a valid integer for this date
+                                Console.WriteLine($"Invalid eye contact value for {formattedDate}: {result}");
+                            }
+                        }
+                        // if result is null or DBNull, no data for that date, so we skip it
+                    }
+                }
+
+                double averageEyeContactScore = totalEyeContactScore / validEntryCount;
+
+                if (validEntryCount > 0)
+                {
+                    //return totalSleep / validEntryCount;
+                    MessageBox.Show($"Average eye contact score over the past 7 days: {averageEyeContactScore}");
+
+                    return averageEyeContactScore;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
+
         public static bool CheckJournalEntryExists(string date)
         {
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))

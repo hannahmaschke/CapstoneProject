@@ -60,5 +60,11 @@ namespace AutismBehaviourTracker
             System.Diagnostics.Process.Start(linkLabel5.Text);
 
         }
+
+        private void aboutAutismForm_Load(object sender, EventArgs e)
+        {
+            DatabaseSetup.AverageDifficultyFallingAsleep();
+            DatabaseSetup.AverageSocialInteractions();
+        }
     }
 }

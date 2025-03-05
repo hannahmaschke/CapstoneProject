@@ -201,6 +201,9 @@ namespace AutismBehaviourTracker
             {
                 MessageBox.Show($"Error: {ex.Message}");
             }
+
+            // refresh the textBox
+            ReloadRichTextBox();
         }
     }
 }
