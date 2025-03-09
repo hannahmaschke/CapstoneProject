@@ -27,8 +27,8 @@ namespace AutismBehaviourTracker
         {
             // get the average sleep values frm the database setup class
             double averageSleep = DatabaseSetup.AverageSleepLast7Days();
-            double averageAwakenings = DatabaseSetup.AverageAwakenings(); 
-            double averageFallAsleepQuality = DatabaseSetup.AverageDifficultyFallingAsleep(); 
+            double averageAwakenings = DatabaseSetup.AverageAwakenings();
+            double averageFallAsleepQuality = DatabaseSetup.AverageDifficultyFallingAsleep();
 
 
             // display the avrage amount of sleep the child is getting
@@ -118,11 +118,11 @@ namespace AutismBehaviourTracker
         private void generateSocialAdvice()
         {
             // get the average social value from the database setup class
-            double averageSocialInteractions = DatabaseSetup.AverageSocialInteractions();  
-            double averageEyeContact = DatabaseSetup.AverageEyeContact();  
-            double averageViolence = DatabaseSetup.AverageViolence(); 
-            double averageDaysWithMeltdown = DatabaseSetup.AverageDaysWithMeltdown();  
-            double averageDifficultyTransitioning = DatabaseSetup.AverageDifficultyTransitioning();  
+            double averageSocialInteractions = DatabaseSetup.AverageSocialInteractions();
+            double averageEyeContact = DatabaseSetup.AverageEyeContact();
+            double averageViolence = DatabaseSetup.AverageViolence();
+            double averageDaysWithMeltdown = DatabaseSetup.AverageDaysWithMeltdown();
+            double averageDifficultyTransitioning = DatabaseSetup.AverageDifficultyTransitioning();
             double averageSocializationAmount = DatabaseSetup.AverageSocializationAmount();
 
             // feedback on the social interaction score
@@ -295,6 +295,17 @@ namespace AutismBehaviourTracker
             double averageLoudStimuliAvoidance = DatabaseSetup.AverageLoudStimuliAvoided();
             double averageVisualStimuliAvoidance = DatabaseSetup.AverageVisualStimuliAvoided();
             double averageTactileStimuliAvoidance = DatabaseSetup.AverageTactileStimuliAvoided();
+            double averageStimScore = DatabaseSetup.AverageStimScore();
+            double averageOverloadScore = DatabaseSetup.AverageSensoryOverload();
+            double averageHyperactivityScore = DatabaseSetup.AverageHyperactivity();
+            double averageTactileSeeked = DatabaseSetup.AverageTactileStimulationSeeked();
+            double averageVestibularSeeked = DatabaseSetup.AverageVestibularStimulationSeeked();
+            double averageProprioceptiveSeeked = DatabaseSetup.AverageProprioceptiveStimulationSeeked();
+            double averageOralSeeked = DatabaseSetup.AverageOralStimulationSeeked();
+            double averageAuditorySeeked = DatabaseSetup.AverageAuditoryStimulationSeeked();
+            double averageVisualSeeked = DatabaseSetup.AverageVisualStimulationSeeked();
+            double averageOlfactorySeeked = DatabaseSetup.AverageOlfactoryStimulationSeeked();
+
 
             // clear the RichTextBox before adding new content
             richTextBox3.Clear();
@@ -390,8 +401,199 @@ namespace AutismBehaviourTracker
                 richTextBox3.Text += "Your child is comfortable with a variety of textures. Continue providing new tactile experiences to encourage sensory exploration.\n";
             }
 
-            // finish the rest of the sensory advice later
+            // stim score advice
+            richTextBox1.Text += $"\nAverage stim score: {averageStimScore:F1} (Scale 1-5, where 1 is no stimming and 5 is frequent stimming).";
+            if (averageStimScore >= 4.5)
+            {
+                richTextBox1.Text += "\nYour child is exhibiting frequent stimming behaviors, which might be a sign of sensory overload or stress. Consider providing calming strategies and a sensory-friendly environment.";
+            }
+            else if (averageStimScore >= 3.5)
+            {
+                richTextBox1.Text += "\nYour child is experiencing moderate stimming behaviors. It might be helpful to create a more calming routine and monitor potential triggers.";
+            }
+            else if (averageStimScore >= 2.5)
+            {
+                richTextBox1.Text += "\nYour child shows some signs of stimming, but it seems manageable. Keep monitoring and ensure they have a relaxing and supportive environment.";
+            }
+            else
+            {
+                richTextBox1.Text += "\nYour child is not exhibiting significant stimming, which suggests they are comfortable with their current sensory environment.";
+            }
+
+            // sensory overload score advice
+            richTextBox1.Text += $"\nAverage sensory overload score: {averageOverloadScore:F1} (Scale 1-5, where 1 is no overload and 5 is overwhelming overload).";
+            if (averageOverloadScore >= 4.5)
+            {
+                richTextBox1.Text += "\nYour child is experiencing significant sensory overload. Consider reducing overstimulating activities, managing noise levels, and introducing more calming breaks.";
+            }
+            else if (averageOverloadScore >= 3.5)
+            {
+                richTextBox1.Text += "\nYour child may be sensitive to sensory input at times. It may help to reduce overwhelming stimuli and create a more soothing environment.";
+            }
+            else if (averageOverloadScore >= 2.5)
+            {
+                richTextBox1.Text += "\nYour child experiences mild sensory overload occasionally. Keep an eye on environmental factors and ensure they have time to decompress.";
+            }
+            else
+            {
+                richTextBox1.Text += "\nYour child does not seem to experience sensory overload frequently, which suggests a balanced sensory environment.";
+            }
+
+            // hyperactivity score advice
+            richTextBox1.Text += $"\nAverage hyperactivity score: {averageHyperactivityScore:F1} (Scale 1-5, where 1 is calm and 5 is highly hyperactive).";
+            if (averageHyperactivityScore >= 4.5)
+            {
+                richTextBox1.Text += "\nYour child shows signs of high hyperactivity. This may indicate a need for more structured routines, frequent physical activity, and breaks to release excess energy.";
+            }
+            else if (averageHyperactivityScore >= 3.5)
+            {
+                richTextBox1.Text += "\nYour child has moderate hyperactivity. Providing regular opportunities for physical activity and relaxation may help in managing this.";
+            }
+            else if (averageHyperactivityScore >= 2.5)
+            {
+                richTextBox1.Text += "\nYour child demonstrates some hyperactivity, but it seems manageable. Encourage activities that help them focus and burn off extra energy.";
+            }
+            else
+            {
+                richTextBox1.Text += "\nYour child appears to have a calm energy level, with minimal signs of hyperactivity. Continue fostering a routine that supports their natural energy flow.";
+            }
+
+            // Seeking sensory stimuli advice
+            // tactile stimuli seeking advice
+            richTextBox3.Text += $"\nAverage tactile stimuli seeking score: {averageTactileSeeked:F1} (Scale 1-5, where 1 is no seeking and 5 is frequent seeking).";
+            if (averageTactileSeeked >= 4.5)
+            {
+                richTextBox3.Text += "\nYour child is frequently seeking tactile stimulation. Provide opportunities for calming touch activities such as squeezing a soft toy, massage, or deep pressure.";
+            }
+            else if (averageTactileSeeked >= 3.5)
+            {
+                richTextBox3.Text += "\nYour child may occasionally seek tactile input. Consider incorporating textures and fidget toys into their environment.";
+            }
+            else if (averageTactileSeeked >= 2.5)
+            {
+                richTextBox3.Text += "\nYour child shows some tactile seeking behaviors. Monitor and provide appropriate tactile stimuli when needed.";
+            }
+            else
+            {
+                richTextBox3.Text += "\nYour child does not seem to actively seek tactile stimulation, suggesting they are comfortable with their environment.";
+            }
+
+            // vestibular stimuli seeking advice
+            richTextBox3.Text += $"\nAverage vestibular stimuli seeking score: {averageVestibularSeeked:F1} (Scale 1-5, where 1 is no seeking and 5 is frequent seeking).";
+            if (averageVestibularSeeked >= 4.5)
+            {
+                richTextBox3.Text += "\nYour child is frequently seeking vestibular stimulation. Engage them in activities like swinging, rocking, or spinning in a controlled and safe environment.";
+            }
+            else if (averageVestibularSeeked >= 3.5)
+            {
+                richTextBox3.Text += "\nYour child may occasionally seek vestibular input. Provide gentle rocking or movements like jumping and crawling.";
+            }
+            else if (averageVestibularSeeked >= 2.5)
+            {
+                richTextBox3.Text += "\nYour child shows some vestibular seeking behaviors. Consider introducing safe movement activities that help regulate their sensory needs.";
+            }
+            else
+            {
+                richTextBox3.Text += "\nYour child does not appear to actively seek vestibular stimuli, indicating a balanced sensory system.";
+            }
+
+            // proprioceptive stimuli seeking advice
+            richTextBox3.Text += $"\nAverage proprioceptive stimuli seeking score: {averageProprioceptiveSeeked:F1} (Scale 1-5, where 1 is no seeking and 5 is frequent seeking).";
+            if (averageProprioceptiveSeeked >= 4.5)
+            {
+                richTextBox3.Text += "\nYour child is frequently seeking proprioceptive input. Provide heavy work activities such as jumping, lifting, or pushing to help them regulate.";
+            }
+            else if (averageProprioceptiveSeeked >= 3.5)
+            {
+                richTextBox3.Text += "\nYour child may occasionally seek proprioceptive input. Consider activities like climbing, crawling, or squeezing.";
+            }
+            else if (averageProprioceptiveSeeked >= 2.5)
+            {
+                richTextBox3.Text += "\nYour child demonstrates some proprioceptive seeking behaviors. Monitor their need for physical input and provide opportunities for deep pressure.";
+            }
+            else
+            {
+                richTextBox3.Text += "\nYour child does not seem to actively seek proprioceptive stimuli, suggesting they are comfortable with their sensory regulation.";
+            }
+
+            // oral stimuli seeking advice
+            richTextBox3.Text += $"\nAverage oral stimuli seeking score: {averageOralSeeked:F1} (Scale 1-5, where 1 is no seeking and 5 is frequent seeking).";
+            if (averageOralSeeked >= 4.5)
+            {
+                richTextBox3.Text += "\nYour child is frequently seeking oral stimulation. Provide safe chewing toys, gum, or sucking activities to help meet this need.";
+            }
+            else if (averageOralSeeked >= 3.5)
+            {
+                richTextBox3.Text += "\nYour child may occasionally seek oral input. Consider offering chewy foods, straws, or oral fidget toys.";
+            }
+            else if (averageOralSeeked >= 2.5)
+            {
+                richTextBox3.Text += "\nYour child shows some oral seeking behaviors. Monitor and provide appropriate oral sensory outlets when necessary.";
+            }
+            else
+            {
+                richTextBox3.Text += "\nYour child does not seem to actively seek oral stimuli, suggesting they are content with their current sensory experience.";
+            }
+
+            // auditory stimuli seeking advice
+            richTextBox3.Text += $"\nAverage auditory stimuli seeking score: {averageAuditorySeeked:F1} (Scale 1-5, where 1 is no seeking and 5 is frequent seeking).";
+            if (averageAuditorySeeked >= 4.5)
+            {
+                richTextBox3.Text += "\nYour child is frequently seeking auditory stimulation. You may want to provide them with music, calming sounds, or sound-based toys.";
+            }
+            else if (averageAuditorySeeked >= 3.5)
+            {
+                richTextBox3.Text += "\nYour child may occasionally seek auditory input. Consider using sound toys, music, or nature sounds to satisfy this need.";
+            }
+            else if (averageAuditorySeeked >= 2.5)
+            {
+                richTextBox3.Text += "\nYour child shows some auditory seeking behaviors. Provide occasional auditory experiences, such as listening to soothing sounds.";
+            }
+            else
+            {
+                richTextBox3.Text += "\nYour child does not appear to actively seek auditory stimuli, suggesting a more balanced sensory input experience.";
+            }
+
+            // visual stimuli seeking advice
+            richTextBox3.Text += $"\nAverage visual stimuli seeking score: {averageVisualSeeked:F1} (Scale 1-5, where 1 is no seeking and 5 is frequent seeking).";
+            if (averageVisualSeeked >= 4.5)
+            {
+                richTextBox3.Text += "\nYour child is frequently seeking visual stimulation. Consider providing opportunities for them to engage with colorful objects, lights, or visual patterns.";
+            }
+            else if (averageVisualSeeked >= 3.5)
+            {
+                richTextBox3.Text += "\nYour child may occasionally seek visual input. Use visually stimulating toys, or activities like drawing and watching bright visuals.";
+            }
+            else if (averageVisualSeeked >= 2.5)
+            {
+                richTextBox3.Text += "\nYour child shows some visual seeking behaviors. Provide occasional visual input such as colorful materials, patterns, or images.";
+            }
+            else
+            {
+                richTextBox3.Text += "\nYour child does not appear to actively seek visual stimuli, suggesting they are content with their environment.";
+            }
+
+            // olfactory advice
+            richTextBox3.Text += $"\nAverage olfactory stimuli seeking score: {averageOlfactorySeeked:F1} (Scale 1-5, where 1 is no seeking and 5 is frequent seeking).";
+            if (averageOlfactorySeeked >= 4.5)
+            {
+                richTextBox3.Text += "\nYour child is frequently seeking olfactory stimulation. You may want to provide them with different scents such as essential oils, scented toys, or flowers.";
+            }
+            else if (averageOlfactorySeeked >= 3.5)
+            {
+                richTextBox3.Text += "\nYour child may occasionally seek olfactory input. Consider offering them different smells or aromatherapy experiences.";
+            }
+            else if (averageOlfactorySeeked >= 2.5)
+            {
+                richTextBox3.Text += "\nYour child shows some olfactory seeking behaviors. Provide opportunities for them to experience different scents in a controlled environment.";
+            }
+            else
+            {
+                richTextBox3.Text += "\nYour child does not appear to actively seek olfactory stimuli, suggesting they are comfortable with their current sensory input.";
+            }
         }
+       
+    
 
 
 
