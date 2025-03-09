@@ -48,7 +48,7 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(159, 30);
             this.cancelButton.TabIndex = 0;
-            this.cancelButton.Text = "Back to Main Menu";
+            this.cancelButton.Text = "Back to Home";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 

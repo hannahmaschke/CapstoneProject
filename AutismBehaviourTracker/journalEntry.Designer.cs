@@ -34,9 +34,9 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.previousEntryLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,9 +74,9 @@
             // submitButton
             // 
             this.submitButton.BackColor = System.Drawing.Color.MediumSpringGreen;
-            this.submitButton.Location = new System.Drawing.Point(1105, 648);
+            this.submitButton.Location = new System.Drawing.Point(1087, 648);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(123, 36);
+            this.submitButton.Size = new System.Drawing.Size(141, 36);
             this.submitButton.TabIndex = 4;
             this.submitButton.Text = "Submit Entry";
             this.submitButton.UseVisualStyleBackColor = false;
@@ -87,9 +87,9 @@
             this.cancelButton.BackColor = System.Drawing.Color.MediumSpringGreen;
             this.cancelButton.Location = new System.Drawing.Point(12, 648);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(116, 38);
+            this.cancelButton.Size = new System.Drawing.Size(135, 38);
             this.cancelButton.TabIndex = 5;
-            this.cancelButton.Text = "Cancel";
+            this.cancelButton.Text = "Back to Home";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
@@ -100,6 +100,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(449, 336);
             this.panel1.TabIndex = 6;
+            // 
+            // richTextBox
+            // 
+            this.richTextBox.Location = new System.Drawing.Point(3, 3);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(443, 330);
+            this.richTextBox.TabIndex = 0;
+            this.richTextBox.Text = "";
             // 
             // previousEntryLabel
             // 
@@ -121,14 +129,6 @@
             this.deleteButton.Text = "Delete entry";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // richTextBox
-            // 
-            this.richTextBox.Location = new System.Drawing.Point(3, 3);
-            this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(443, 330);
-            this.richTextBox.TabIndex = 0;
-            this.richTextBox.Text = "";
             // 
             // comboBox
             // 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,6 @@ namespace AutismBehaviourTracker
         // parallel array for sublabels- this is to change the subLabel for question1
         private string[] questionSublabels = new string[dailyQuestionsClass.questions.Length];
 
-        
         public dailyQuestionForm()
         {
             InitializeComponent();
@@ -32,7 +32,10 @@ namespace AutismBehaviourTracker
             radioButtonOptions[4] = radioButton5;
 
             // initialize sublabels- set values for each question
-            InitializeQuestionSublabels(); 
+            InitializeQuestionSublabels();
+
+            // initialize ComboBox for sleep hours
+            InitializeSleepHoursComboBox();
 
             // display the first question when the form is loaded
             DisplayNextQuestion();
@@ -42,13 +45,12 @@ namespace AutismBehaviourTracker
         // keep track of the current question index
         private int currentQuestionIndex = 0;
 
-
         // function to change the subLabel depending on the question asked
         // this is to change the subLabel for questions that need a specific input and also to add the question the user is currently on
         private void InitializeQuestionSublabels()
         {
             // initialize sublabels - set the sublabel for question 1
-            questionSublabels[0] = "Question 1 of 29:\n Select 1 for 1-3 hours slept, 2 for 4-5 hours slept, 3 for 6-7 hours slept, 4 for 8-9 hours slept, or 5 for 10+ hours slept.";
+            questionSublabels[0] = "Question 1 of 29:\n Select the number of hours your child slept last night.";
 
             questionSublabels[1] = "Question 2 of 29:\n 1 meaning no awakenings during the night, 2 meaning woke up once and fell back asleep quickly, 3 meaning woke up once and took awhile to fall back asleep, 4 meaning woke up at least twice, 5 meaning several awakenings";
 
@@ -105,17 +107,29 @@ namespace AutismBehaviourTracker
             questionSublabels[27] = "Question 28 of 29: \n 1 meaning they did not seek olfactory stimulation, 5 meaning they sought olfactory stimulation frequently";
 
             questionSublabels[28] = "Question 29 of 29: \n 1 meaning they did not stomp and crash into things, 5 meaning they stomped and crashed into things frequently";
-
-
-
-
         }
 
+        // function to initialize the ComboBox for sleep hours
+        private void InitializeSleepHoursComboBox()
+        {
+            ComboBox sleepHoursComboBox = new ComboBox();
+            sleepHoursComboBox.Name = "sleepHoursComboBox";
+            sleepHoursComboBox.Location = new Point(150, 150); 
+            sleepHoursComboBox.Size = new Size(100, 20); 
+
+            // add items to the ComboBox
+            for (int i = 1; i <= 12; i++)
+            {
+                sleepHoursComboBox.Items.Add(i.ToString() + " hours");
+            }
+
+            sleepHoursComboBox.SelectedIndexChanged += new EventHandler(sleepHoursComboBox_SelectedIndexChanged);
+            this.Controls.Add(sleepHoursComboBox);
+        }
 
         // function to display the current question
         private void DisplayNextQuestion()
         {
-
             if (currentQuestionIndex < dailyQuestionsClass.questions.Length)
             {
                 // display the current question
@@ -124,60 +138,111 @@ namespace AutismBehaviourTracker
                 // update the sublabel
                 subLabel.Text = questionSublabels[currentQuestionIndex];
 
+                if (currentQuestionIndex == 0) // check if it's the sleep hours question
+                {
+                    // hide radio buttons if on the first question
+                    radioButton1.Visible = false;
+                    radioButton2.Visible = false;
+                    radioButton3.Visible = false;
+                    radioButton4.Visible = false;
+                    radioButton5.Visible = false;
+
+                    // show the ComboBox for sleep hours
+                    if (this.Controls.Find("sleepHoursComboBox", true).FirstOrDefault() is ComboBox sleepHoursComboBox)
+                    {
+                        sleepHoursComboBox.Visible = true;
+                    }
+                }
+                else
+                {
+                    // show radio buttons for other questions
+                    radioButton1.Visible = true;
+                    radioButton2.Visible = true;
+                    radioButton3.Visible = true;
+                    radioButton4.Visible = true;
+                    radioButton5.Visible = true;
+
+                    // hide ComboBox for sleep hours
+                    if (this.Controls.Find("sleepHoursComboBox", true).FirstOrDefault() is ComboBox sleepHoursComboBox)
+                    {
+                        sleepHoursComboBox.Visible = false;
+                    }
+                }
             }
             else
             {
                 // display a popup when all questions are answered
                 MessageBox.Show("Questions Submitted!");
 
-                // Get the date
-                // get the current date and time
+                // get the date
                 string currentDate = DateTime.Now.ToString("MMMM dd, yyyy HH:mm:ss");
 
                 // close the form after submission
                 this.Close();
             }
-
         }
 
+        //public void SaveResponse()
+        //{
+        //    // array to hold the selected answers for each question
+        //    int[] responses = new int[dailyQuestionsClass.questions.Length];
 
-        public void SaveResponse()
-        {
-            // array to hold the selected answers for each question
-            int[] responses = new int[dailyQuestionsClass.questions.Length];
+        //    // collect the selected answer for the current question 
+        //    if (currentQuestionIndex == 0)
+        //    {
+        //        // Directly access the ComboBox from the designer
+        //        if (Controls.Find("sleepHoursComboBox", true)[0] is ComboBox sleepHoursComboBoxControl)
+        //        {
 
-            // collect the selected answer for the current question 
-            responses[currentQuestionIndex] = GetSelectedAnswer();
+        //            // Extract the number of hours from the selected string (e.g., "1 hour", "2 hours")
+        //            int hoursSlept = sleepHoursComboBoxControl.SelectedIndex + 1;
+        //            Debug.WriteLine($"Hours Slept: {hoursSlept}");
+        //            // Set the response based on the selected number of hours
+        //            responses[currentQuestionIndex] = hoursSlept; // Map directly to the response as hours slept
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // handle radio button selection for other questions
+        //        responses[currentQuestionIndex] = GetSelectedAnswer();
+        //    }
 
-            // save the responses array to the database
-            DatabaseSetup.SaveResponse(responses);  
 
-            // move to the next question
-            currentQuestionIndex++;
+        //    // save the responses array to the database
+        //    DatabaseSetup.SaveResponse(responses);
 
-            // check if all questions have been answered otherwise continue showing the next question
-            if (currentQuestionIndex < dailyQuestionsClass.questions.Length)
-            {
-                DisplayNextQuestion();
-            }
-            else
-            {
-                // show msg when all questions are submitted
-                MessageBox.Show("Questions Submitted!");
-                this.Close();
-            }
+        //    // move to the next question
+        //    currentQuestionIndex++;
 
-            // clear the radio buttons for the next question
-            radioButton1.Checked = false;
-            radioButton2.Checked = false;
-            radioButton3.Checked = false;
-            radioButton4.Checked = false;
-            radioButton5.Checked = false;
+        //    // check if all questions have been answered otherwise continue showing the next question
+        //    if (currentQuestionIndex < dailyQuestionsClass.questions.Length)
+        //    {
+        //        DisplayNextQuestion();
+        //    }
+        //    else
+        //    {
+        //        // show msg when all questions are submitted
+        //        MessageBox.Show("Questions Submitted!");
+        //        this.Close();
+        //    }
 
-            // disable the submit button until the next answer is selected
-            submitButton.Enabled = false;
-        }
+        //    // clear the radio buttons and ComboBox for the next question
+        //    radioButton1.Checked = false;
+        //    radioButton2.Checked = false;
+        //    radioButton3.Checked = false;
+        //    radioButton4.Checked = false;
+        //    radioButton5.Checked = false;
 
+        //    // Reset the ComboBox selection for the next question
+        //    ComboBox sleepHoursComboBox = this.Controls.Find("sleepHoursComboBox", true).FirstOrDefault() as ComboBox;
+        //    if (sleepHoursComboBox != null)
+        //    {
+        //        sleepHoursComboBox.SelectedIndex = -1;  // reset the selection
+        //    }
+
+        //    // disable the submit button until the next answer is selected
+        //    submitButton.Enabled = false;
+        //}
 
         private void submitButton_Click(object sender, EventArgs e)
         {
@@ -188,7 +253,21 @@ namespace AutismBehaviourTracker
             int selectedAnswer = GetSelectedAnswer();
 
             // store the selected answer in the responses array
-            responses[currentQuestionIndex] = selectedAnswer;
+            if (currentQuestionIndex == 0)
+            {
+                // Directly access the ComboBox from the designer
+                if (Controls.Find("sleepHoursComboBox", true)[0] is ComboBox sleepHoursComboBoxControl)
+                {
+
+                    // Extract the number of hours from the selected string 
+                    int hoursSlept = sleepHoursComboBoxControl.SelectedIndex + 1;
+                    Debug.WriteLine($"Hours Slept: {hoursSlept}");
+                    // Set the response based on the selected number of hours
+                    responses[currentQuestionIndex] = hoursSlept; 
+                }
+            }
+            else
+                responses[currentQuestionIndex] = selectedAnswer;
 
             // if it's the last question, save the responses to the database
             if (currentQuestionIndex == dailyQuestionsClass.questions.Length - 1)
@@ -285,7 +364,6 @@ namespace AutismBehaviourTracker
             }
         }
 
-
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -293,12 +371,17 @@ namespace AutismBehaviourTracker
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-           submitButton.Enabled = true; 
+            submitButton.Enabled = true;
         }
 
         private void dailyQuestionForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void sleepHoursComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            submitButton.Enabled = true;
         }
     }
 }

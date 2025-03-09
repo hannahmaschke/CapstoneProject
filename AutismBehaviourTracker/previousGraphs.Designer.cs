@@ -38,7 +38,7 @@ namespace AutismBehaviourTracker
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(199, 32);
             this.cancelButton.TabIndex = 2;
-            this.cancelButton.Text = "Go Back to Main Menu";
+            this.cancelButton.Text = "Back to Home";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 

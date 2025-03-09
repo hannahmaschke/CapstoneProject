@@ -27,7 +27,7 @@ namespace AutismBehaviourTracker
             {
                 conn.Open();
 
-                string query = "SELECT date, Id, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15, question16, question17, question18, question19, question20, question21, question22, question23, question24, question25, question26 FROM questionResponses ORDER BY Id ASC";
+                string query = "SELECT date, Id, question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15, question16, question17, question18, question19, question20, question21, question22, question23, question24, question25, question26, question27, question28, question29 FROM questionResponses ORDER BY Id ASC";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
@@ -41,10 +41,12 @@ namespace AutismBehaviourTracker
                         entry.AppendLine(date);
                         entry.AppendLine($"ID: {id}");
 
-                        for (int i = 2; i <= 27; i++)
+                        for (int i = 2; i <= 30; i++) // Loop through question columns
                         {
                             string question = dailyQuestionsClass.questions[i - 2];
-                            int answer = reader.GetInt32(i);
+
+                            // Check for DBNull before calling GetInt32
+                            int answer = reader.IsDBNull(i) ? -1 : reader.GetInt32(i); // Use -1 as a placeholder for nulls
                             entry.AppendLine($"Question {i - 1}: {question} Response: {answer}");
                         }
 
@@ -63,8 +65,8 @@ namespace AutismBehaviourTracker
             DatabaseSetup.AverageAwakenings();
             DatabaseSetup.AverageDifficultyFallingAsleep();
             List<string> responses = LoadQuestionResponses();
-            textBoxResponses.Clear(); 
-            textBoxResponses.Text = string.Join(Environment.NewLine, responses); 
+            textBoxResponses.Clear();
+            textBoxResponses.Text = string.Join(Environment.NewLine, responses);
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
