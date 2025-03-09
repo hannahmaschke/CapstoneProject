@@ -145,6 +145,7 @@
             this.MaximizeBox = false;
             this.Name = "adviceForm";
             this.Text = "adviceForm";
+            this.Load += new System.EventHandler(this.adviceForm_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
