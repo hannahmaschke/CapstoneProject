@@ -1626,6 +1626,138 @@ namespace AutismBehaviourTracker
                 }
             }
         }
-    }
+
+        // this function is for graphing the sleep data over the past 7 days for the visualizeData form
+        public static List<Tuple<DateTime, int>> GetSleepDataLast7Days()
+        {
+            List<Tuple<DateTime, int>> sleepData = new List<Tuple<DateTime, int>>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+                SELECT date, question1 
+                FROM questionResponses 
+                ORDER BY date DESC 
+                LIMIT 7"; // Get the last 7 submissions
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            DateTime date = DateTime.Parse(reader["date"].ToString());
+                            int sleepHours = reader["question1"] != DBNull.Value ? Convert.ToInt32(reader["question1"]) : 0;
+                            sleepData.Add(new Tuple<DateTime, int>(date, sleepHours));
+                        }
+                    }
+                }
+            }
+            // show the earliest submissions first
+            sleepData.Reverse(); 
+            return sleepData;
         }
+
+        // this function is for graphing the social interactions at school question submissions (question 6)
+        public static List<Tuple<string, int>> GetSocialDataLast7Submissions()
+        {
+            List<Tuple<string, int>> socialData = new List<Tuple<string, int>>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+            SELECT date, question6 
+            FROM questionResponses 
+            ORDER BY date DESC 
+            LIMIT 7"; 
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string date = reader["date"].ToString();
+                            int socialInteractions = reader["question6"] != DBNull.Value ? Convert.ToInt32(reader["question6"]) : 0;
+                            socialData.Add(new Tuple<string, int>(date, socialInteractions));
+                        }
+                    }
+                }
+            }
+
+            socialData.Reverse(); 
+            return socialData;
+        }
+
+        // this function is for graphing the eye contact question submissions (question 7)
+        public static List<Tuple<string, int>> GetEyeContactDataLast7Submissions()
+        {
+            List<Tuple<string, int>> eyeContactData = new List<Tuple<string, int>>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+            SELECT date, question7 
+            FROM questionResponses 
+            ORDER BY date DESC 
+            LIMIT 7";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string date = reader["date"].ToString();
+                            int eyeContact = reader["question7"] != DBNull.Value ? Convert.ToInt32(reader["question7"]) : 0;
+                            eyeContactData.Add(new Tuple<string, int>(date, eyeContact));
+                        }
+                    }
+                }
+            }
+
+            eyeContactData.Reverse();
+            return eyeContactData;
+        }
+
+        // this function is for graphing the meltdown question submissions (question 9)
+        public static List<Tuple<string, int>> GetMeltdownDataLast7Submissions()
+        {
+            List<Tuple<string, int>> meltdownData = new List<Tuple<string, int>>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+            SELECT date, question9 
+            FROM questionResponses 
+            ORDER BY date DESC 
+            LIMIT 7";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string date = reader["date"].ToString();
+                            int meltdown = reader["question9"] != DBNull.Value ? Convert.ToInt32(reader["question9"]) : 0;
+                            meltdownData.Add(new Tuple<string, int>(date, meltdown));
+                        }
+                    }
+                }
+            }
+
+            meltdownData.Reverse();
+            return meltdownData;
+        }
+    }
+}
     
