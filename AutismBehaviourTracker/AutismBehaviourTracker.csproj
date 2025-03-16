@@ -139,6 +139,12 @@
     <Compile Include="journalEntry.Designer.cs">
       <DependentUpon>journalEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="NameChartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NameChartForm.Designer.cs">
+      <DependentUpon>NameChartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="previousGraphs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="questionLogicClass.cs" />
+    <Compile Include="SavedCharts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SavedCharts.Designer.cs">
+      <DependentUpon>SavedCharts.cs</DependentUpon>
+    </Compile>
     <Compile Include="visualizeData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +181,9 @@
     <EmbeddedResource Include="journalEntry.resx">
       <DependentUpon>journalEntry.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NameChartForm.resx">
+      <DependentUpon>NameChartForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="previousGraphs.resx">
       <DependentUpon>previousGraphs.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +196,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SavedCharts.resx">
+      <DependentUpon>SavedCharts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="visualizeData.resx">
       <DependentUpon>visualizeData.cs</DependentUpon>
     </EmbeddedResource>

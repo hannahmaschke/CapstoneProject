@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AutismBehaviourTracker
 {
@@ -46,7 +49,7 @@ namespace AutismBehaviourTracker
                         string entryText = reader.GetString(1);
 
                         // combine the date and entryText to be displayed in the textbx
-                        string formattedEntry = $"Date: {date} \n\r {entryText}";  
+                        string formattedEntry = $"Date: {date} \n\r {entryText}";
                         entries.Add(formattedEntry);
                     }
                 }
@@ -189,7 +192,7 @@ namespace AutismBehaviourTracker
 
                         if (result != null && result != DBNull.Value) // need to check for null and DBNull
                         {
-                            if (int.TryParse(result.ToString(), out int sleepHours)) 
+                            if (int.TryParse(result.ToString(), out int sleepHours))
                             {
                                 totalSleep += sleepHours;
                                 validEntryCount++;
@@ -214,7 +217,7 @@ namespace AutismBehaviourTracker
                 }
                 else
                 {
-                    return 0; 
+                    return 0;
                 }
             }
         }
@@ -1656,7 +1659,7 @@ namespace AutismBehaviourTracker
                 }
             }
             // show the earliest submissions first
-            sleepData.Reverse(); 
+            sleepData.Reverse();
             return sleepData;
         }
 
@@ -1673,7 +1676,7 @@ namespace AutismBehaviourTracker
             SELECT date, question6 
             FROM questionResponses 
             ORDER BY date DESC 
-            LIMIT 7"; 
+            LIMIT 7";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
@@ -1689,7 +1692,7 @@ namespace AutismBehaviourTracker
                 }
             }
 
-            socialData.Reverse(); 
+            socialData.Reverse();
             return socialData;
         }
 
@@ -1757,6 +1760,107 @@ namespace AutismBehaviourTracker
 
             meltdownData.Reverse();
             return meltdownData;
+        }
+
+        // creates a table for saved charts in the database
+        public static void CreateSavedChartsTable()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"
+            CREATE TABLE IF NOT EXISTS SavedCharts (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                chartName TEXT,
+                chartImage BLOB,
+                savedDate TEXT
+            )";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // function for saving images of charts to database 
+        public static void SaveChartToDatabase(Chart chart, string chartName)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                chart.SaveImage(ms, ChartImageFormat.Png); // convert chart to PNG
+                byte[] imageBytes = ms.ToArray();
+
+                using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = "INSERT INTO SavedCharts (chartName, chartImage, savedDate) VALUES (@chartName, @chartImage, @savedDate)";
+
+                    using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@chartName", chartName);
+                        cmd.Parameters.AddWithValue("@chartImage", imageBytes);
+                        cmd.Parameters.AddWithValue("@savedDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+
+            MessageBox.Show("Chart saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // function for retrieving the date of the latest submission
+        public static string GetLatestSubmissionDate()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT date FROM questionResponses ORDER BY date DESC LIMIT 1";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+                    return result != null ? result.ToString() : "Unknown Date";
+                }
+            }
+        }
+
+        //get saved charts
+        public static List<Tuple<int, string, Image>> GetSavedCharts()
+        {
+            List<Tuple<int, string, Image>> savedCharts = new List<Tuple<int, string, Image>>();
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT id, chartName, chartImage FROM SavedCharts ORDER BY savedDate DESC";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string chartName = reader.GetString(1);
+                            byte[] imageBytes = (byte[])reader["chartImage"];
+
+                            using (MemoryStream ms = new MemoryStream(imageBytes))
+                            {
+                                Image chartImage = Image.FromStream(ms);
+                                savedCharts.Add(new Tuple<int, string, Image>(id, chartName, chartImage));
+                            }
+                        }
+                    }
+                }
+            }
+
+            return savedCharts;
         }
     }
 }

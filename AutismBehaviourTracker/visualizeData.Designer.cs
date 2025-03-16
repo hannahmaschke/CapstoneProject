@@ -47,6 +47,15 @@
             this.socialChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.eyeContactChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.meltdownChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnSaveSleepChart = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.savedChartsButton = new System.Windows.Forms.Button();
+            this.saveAppBtnSleep = new System.Windows.Forms.Button();
+            this.saveAppBtnSocial = new System.Windows.Forms.Button();
+            this.saveAppBtnEye = new System.Windows.Forms.Button();
+            this.saveAppBtnMeltdown = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sleepChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.socialChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eyeContactChart)).BeginInit();
@@ -102,7 +111,7 @@
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.socialChart.Series.Add(series2);
-            this.socialChart.Size = new System.Drawing.Size(555, 300);
+            this.socialChart.Size = new System.Drawing.Size(543, 300);
             this.socialChart.TabIndex = 3;
             this.socialChart.Text = "chart1";
             // 
@@ -112,7 +121,7 @@
             this.eyeContactChart.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.eyeContactChart.Legends.Add(legend3);
-            this.eyeContactChart.Location = new System.Drawing.Point(40, 410);
+            this.eyeContactChart.Location = new System.Drawing.Point(31, 400);
             this.eyeContactChart.Name = "eyeContactChart";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
@@ -128,7 +137,7 @@
             this.meltdownChart.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
             this.meltdownChart.Legends.Add(legend4);
-            this.meltdownChart.Location = new System.Drawing.Point(599, 400);
+            this.meltdownChart.Location = new System.Drawing.Point(588, 400);
             this.meltdownChart.Name = "meltdownChart";
             series4.ChartArea = "ChartArea1";
             series4.Legend = "Legend1";
@@ -138,12 +147,120 @@
             this.meltdownChart.TabIndex = 5;
             this.meltdownChart.Text = "chart2";
             // 
+            // btnSaveSleepChart
+            // 
+            this.btnSaveSleepChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnSaveSleepChart.Location = new System.Drawing.Point(428, 151);
+            this.btnSaveSleepChart.Name = "btnSaveSleepChart";
+            this.btnSaveSleepChart.Size = new System.Drawing.Size(181, 41);
+            this.btnSaveSleepChart.TabIndex = 7;
+            this.btnSaveSleepChart.Text = "Save Chart as JPG";
+            this.btnSaveSleepChart.UseVisualStyleBackColor = false;
+            this.btnSaveSleepChart.Click += new System.EventHandler(this.btnSaveChart_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button1.Location = new System.Drawing.Point(992, 151);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(183, 41);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Save Chart as JPG";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button2.Location = new System.Drawing.Point(417, 457);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(181, 46);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Save Chart as JPG";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button3.Location = new System.Drawing.Point(968, 457);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(181, 46);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Save Chart as JPG";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // savedChartsButton
+            // 
+            this.savedChartsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.savedChartsButton.Location = new System.Drawing.Point(862, 37);
+            this.savedChartsButton.Name = "savedChartsButton";
+            this.savedChartsButton.Size = new System.Drawing.Size(177, 38);
+            this.savedChartsButton.TabIndex = 11;
+            this.savedChartsButton.Text = "View saved charts";
+            this.savedChartsButton.UseVisualStyleBackColor = false;
+            this.savedChartsButton.Click += new System.EventHandler(this.savedChartsButton_Click);
+            // 
+            // saveAppBtnSleep
+            // 
+            this.saveAppBtnSleep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.saveAppBtnSleep.Location = new System.Drawing.Point(428, 210);
+            this.saveAppBtnSleep.Name = "saveAppBtnSleep";
+            this.saveAppBtnSleep.Size = new System.Drawing.Size(181, 40);
+            this.saveAppBtnSleep.TabIndex = 12;
+            this.saveAppBtnSleep.Text = "Save in app";
+            this.saveAppBtnSleep.UseVisualStyleBackColor = false;
+            this.saveAppBtnSleep.Click += new System.EventHandler(this.saveAppBtnSleep_Click);
+            // 
+            // saveAppBtnSocial
+            // 
+            this.saveAppBtnSocial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.saveAppBtnSocial.Location = new System.Drawing.Point(992, 210);
+            this.saveAppBtnSocial.Name = "saveAppBtnSocial";
+            this.saveAppBtnSocial.Size = new System.Drawing.Size(183, 40);
+            this.saveAppBtnSocial.TabIndex = 13;
+            this.saveAppBtnSocial.Text = "Save in app";
+            this.saveAppBtnSocial.UseVisualStyleBackColor = false;
+            this.saveAppBtnSocial.Click += new System.EventHandler(this.saveAppBtnSocial_Click);
+            // 
+            // saveAppBtnEye
+            // 
+            this.saveAppBtnEye.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.saveAppBtnEye.Location = new System.Drawing.Point(417, 520);
+            this.saveAppBtnEye.Name = "saveAppBtnEye";
+            this.saveAppBtnEye.Size = new System.Drawing.Size(181, 43);
+            this.saveAppBtnEye.TabIndex = 14;
+            this.saveAppBtnEye.Text = "Save in app";
+            this.saveAppBtnEye.UseVisualStyleBackColor = false;
+            this.saveAppBtnEye.Click += new System.EventHandler(this.saveAppBtnEye_Click);
+            // 
+            // saveAppBtnMeltdown
+            // 
+            this.saveAppBtnMeltdown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.saveAppBtnMeltdown.Location = new System.Drawing.Point(968, 520);
+            this.saveAppBtnMeltdown.Name = "saveAppBtnMeltdown";
+            this.saveAppBtnMeltdown.Size = new System.Drawing.Size(181, 43);
+            this.saveAppBtnMeltdown.TabIndex = 15;
+            this.saveAppBtnMeltdown.Text = "Save in app";
+            this.saveAppBtnMeltdown.UseVisualStyleBackColor = false;
+            this.saveAppBtnMeltdown.Click += new System.EventHandler(this.saveAppBtnMeltdown_Click);
+            // 
             // visualizeData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1224, 831);
+            this.Controls.Add(this.saveAppBtnMeltdown);
+            this.Controls.Add(this.saveAppBtnEye);
+            this.Controls.Add(this.saveAppBtnSocial);
+            this.Controls.Add(this.saveAppBtnSleep);
+            this.Controls.Add(this.savedChartsButton);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSaveSleepChart);
             this.Controls.Add(this.meltdownChart);
             this.Controls.Add(this.eyeContactChart);
             this.Controls.Add(this.socialChart);
@@ -153,7 +270,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "visualizeData";
-            this.Text = "s";
+            this.Text = "View your child\'s progress";
             this.Load += new System.EventHandler(this.visualizeData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sleepChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.socialChart)).EndInit();
@@ -172,5 +289,14 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart socialChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart eyeContactChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart meltdownChart;
+        private System.Windows.Forms.Button btnSaveSleepChart;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button savedChartsButton;
+        private System.Windows.Forms.Button saveAppBtnSleep;
+        private System.Windows.Forms.Button saveAppBtnSocial;
+        private System.Windows.Forms.Button saveAppBtnEye;
+        private System.Windows.Forms.Button saveAppBtnMeltdown;
     }
 }

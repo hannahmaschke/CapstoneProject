@@ -43,7 +43,7 @@ namespace AutismBehaviourTracker
 
         private void mainMenu_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void dailyQuestions_Click(object sender, EventArgs e)
