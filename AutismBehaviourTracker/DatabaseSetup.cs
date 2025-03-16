@@ -212,7 +212,7 @@ namespace AutismBehaviourTracker
                 if (validEntryCount > 0)
                 {
                     //return totalSleep / validEntryCount;
-                    MessageBox.Show($"Average sleep hours for the past 7 days: {averageSleep}");
+                   // MessageBox.Show($"Average sleep hours for the past 7 days: {averageSleep}");
                     return averageSleep;
                 }
                 else
@@ -267,7 +267,7 @@ namespace AutismBehaviourTracker
                 if (validEntryCount > 0)
                 {
                     //return totalSleep / validEntryCount;
-                    MessageBox.Show($"Average number of times your child has woken up in the night over the past 7 days: {averageAwakenings}");
+                   // MessageBox.Show($"Average number of times your child has woken up in the night over the past 7 days: {averageAwakenings}");
                     return averageAwakenings;
                 }
                 else
@@ -323,7 +323,7 @@ namespace AutismBehaviourTracker
                 if (validEntryCount > 0)
                 {
                     //return totalSleep / validEntryCount;
-                    MessageBox.Show($"Average difficulty falling asleep over the past 7 days: {averageFallAsleepQuality}");
+                    //MessageBox.Show($"Average difficulty falling asleep over the past 7 days: {averageFallAsleepQuality}");
 
                     return averageFallAsleepQuality;
                 }
@@ -380,7 +380,7 @@ namespace AutismBehaviourTracker
                 if (validEntryCount > 0)
                 {
                     //return totalSleep / validEntryCount;
-                    MessageBox.Show($"Average social interaction score over the past 7 days: {averageSocialInteraction}");
+                   // MessageBox.Show($"Average social interaction score over the past 7 days: {averageSocialInteraction}");
 
                     return averageSocialInteraction;
                 }
@@ -437,7 +437,7 @@ namespace AutismBehaviourTracker
                 if (validEntryCount > 0)
                 {
                     //return totalSleep / validEntryCount;
-                    MessageBox.Show($"Average eye contact score over the past 7 days: {averageEyeContactScore}");
+                    //MessageBox.Show($"Average eye contact score over the past 7 days: {averageEyeContactScore}");
 
                     return averageEyeContactScore;
                 }
@@ -493,7 +493,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average violence score over the past 7 days: {averageViolenceScore}");
+                    //MessageBox.Show($"Average violence score over the past 7 days: {averageViolenceScore}");
 
                     return averageViolenceScore;
                 }
@@ -549,7 +549,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average violence score over the past 7 days: {averageDaysWithMeltdowns}");
+                    //MessageBox.Show($"Average violence score over the past 7 days: {averageDaysWithMeltdowns}");
 
                     return averageDaysWithMeltdowns;
                 }
@@ -605,7 +605,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average violence score over the past 7 days: {averageTransitionScore}");
+                    //MessageBox.Show($"Average violence score over the past 7 days: {averageTransitionScore}");
 
                     return averageTransitionScore;
                 }
@@ -661,7 +661,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average violence score over the past 7 days: {averageSocializationScore}");
+                    //MessageBox.Show($"Average violence score over the past 7 days: {averageSocializationScore}");
 
                     return averageSocializationScore;
                 }
@@ -717,7 +717,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average meal refusal score over the past 7 days: {averageRefusalScore}");
+                    //MessageBox.Show($"Average meal refusal score over the past 7 days: {averageRefusalScore}");
 
                     return averageRefusalScore;
                 }
@@ -773,7 +773,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average appetite score over the past 7 days: {averageAppetiteScore}");
+                   // MessageBox.Show($"Average appetite score over the past 7 days: {averageAppetiteScore}");
 
                     return averageAppetiteScore;
                 }
@@ -831,7 +831,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average loud stimuli avoidance score over the past 7 days: {averageAvoidanceScore}");
+                   // MessageBox.Show($"Average loud stimuli avoidance score over the past 7 days: {averageAvoidanceScore}");
 
                     return averageAvoidanceScore;
                 }
@@ -887,7 +887,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average visual stimuli avoidance score over the past 7 days: {averageAvoidanceScore}");
+                   // MessageBox.Show($"Average visual stimuli avoidance score over the past 7 days: {averageAvoidanceScore}");
 
                     return averageAvoidanceScore;
                 }
@@ -943,7 +943,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average tactile stimuli avoidance score over the past 7 days: {averageAvoidanceScore}");
+                   // MessageBox.Show($"Average tactile stimuli avoidance score over the past 7 days: {averageAvoidanceScore}");
 
                     return averageAvoidanceScore;
                 }
@@ -999,7 +999,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average stim score over the past 7 days: {averageStimScore}");
+                   // MessageBox.Show($"Average stim score over the past 7 days: {averageStimScore}");
 
                     return averageStimScore;
                 }
@@ -1055,7 +1055,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average sensory overload score over the past 7 days: {averageOverloadScore}");
+                   // MessageBox.Show($"Average sensory overload score over the past 7 days: {averageOverloadScore}");
 
                     return averageOverloadScore;
                 }
@@ -1209,7 +1209,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average hyperactivity score over the past 7 days: {averageHyperactivityScore}");
+                   // MessageBox.Show($"Average hyperactivity score over the past 7 days: {averageHyperactivityScore}");
 
                     return averageHyperactivityScore;
                 }
@@ -1267,7 +1267,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average tactile stimulation seeking score over the past 7 days: {averageSeekedScore}");
+                   // MessageBox.Show($"Average tactile stimulation seeking score over the past 7 days: {averageSeekedScore}");
 
                     return averageSeekedScore;
                 }
@@ -1323,7 +1323,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average vestibular stimulation seeking score over the past 7 days: {averageSeekedScore}");
+                   // MessageBox.Show($"Average vestibular stimulation seeking score over the past 7 days: {averageSeekedScore}");
 
                     return averageSeekedScore;
                 }
@@ -1379,7 +1379,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average proprioceptive stimulation seeking score over the past 7 days: {averageSeekedScore}");
+                   // MessageBox.Show($"Average proprioceptive stimulation seeking score over the past 7 days: {averageSeekedScore}");
 
                     return averageSeekedScore;
                 }
@@ -1435,7 +1435,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average oral stimulation seeking score over the past 7 days: {averageSeekedScore}");
+                   // MessageBox.Show($"Average oral stimulation seeking score over the past 7 days: {averageSeekedScore}");
 
                     return averageSeekedScore;
                 }
@@ -1491,7 +1491,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average auditory stimulation seeking score over the past 7 days: {averageSeekedScore}");
+                    //MessageBox.Show($"Average auditory stimulation seeking score over the past 7 days: {averageSeekedScore}");
 
                     return averageSeekedScore;
                 }
@@ -1547,7 +1547,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average visual stimulation seeking score over the past 7 days: {averageSeekedScore}");
+                   // MessageBox.Show($"Average visual stimulation seeking score over the past 7 days: {averageSeekedScore}");
 
                     return averageSeekedScore;
                 }
@@ -1603,7 +1603,7 @@ namespace AutismBehaviourTracker
 
                 if (validEntryCount > 0)
                 {
-                    MessageBox.Show($"Average olfactory stimulation seeking score over the past 7 days: {averageSeekedScore}");
+                   // MessageBox.Show($"Average olfactory stimulation seeking score over the past 7 days: {averageSeekedScore}");
 
                     return averageSeekedScore;
                 }
